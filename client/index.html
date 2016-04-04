@@ -1,0 +1,18 @@
+<head>
+  <title>Linear Regression Component</title>
+</head>
+<body>
+  {{> regression}}
+</body>
+
+<template name="regression">
+  <div class="reg-content">
+    <h1 class="reg-title">Prediction</h1>
+    <h2 class="reg-subtitle">A prediction view using linear regression</h2>
+    <select>
+      <option value="p">Performance</option>
+      <option value="w">Workload</option>
+    </select>
+    <div class="reg-chart"></div>
+  </div>
+</template>
