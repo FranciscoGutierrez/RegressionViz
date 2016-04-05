@@ -6,7 +6,7 @@
   margin:  7px;
   height: 878px;
   width: 600px;
-  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);
+  /*box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);*/
 }
 
 .reg-title {
@@ -35,4 +35,9 @@
 
 .reg-content svg {
   font-size: 11px;
+}
+
+.reg-chart {
+  margin-top: 15px;
+  height: 400px;
 }
