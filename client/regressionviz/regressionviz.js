@@ -12,7 +12,7 @@ Template.regression.helpers({
     };
   },
   students() {
-    return Grades.find({});
+    return 123;
   },
   prediction() {
   }

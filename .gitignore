@@ -1,4 +1,19 @@
-# Created by https://www.gitignore.io/api/osx,meteorjs
+
+# Created by https://www.gitignore.io/api/meteorjs,osx
+
+### MeteorJS ###
+# default meteor build and local packages
+.meteor/local
+
+# meteor settings file
+settings.json
+
+# meteor build output files
+*.tar.gz
+
+# general swp files from vim
+*.swp
+
 
 ### OSX ###
 .DS_Store
@@ -28,17 +43,9 @@ Temporary Items
 .apdisk
 
 
-### MeteorJS ###
-# default meteor build and local packages
+# Custom...
+
 .meteor/local
-
-# meteor settings file
-settings.json
-
-# meteor build output files
-*.tar.gz
-
-# general swp files from vim
-*.swp
-
-node_modules/
+.meteor/meteorite
+public/bower_components
+node_modules
