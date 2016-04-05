@@ -28,3 +28,11 @@
   line-height: 1.4;
   opacity: 0.5;
 }
+
+.reg-options {
+  margin-top: 20px;
+}
+
+.reg-content svg {
+  font-size: 11px;
+}
