@@ -1,11 +1,10 @@
 /* CSS declarations go here */
 .reg-content {
+  display: flex;
   font-family: Roboto, Arial, sans-serif;
   background: white;
   padding: 15px;
   margin:  7px;
-  height: 878px;
-  width: 600px;
   /*box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);*/
 }
 
@@ -40,4 +39,59 @@
 .reg-chart {
   margin-top: 15px;
   height: 400px;
+  /*width:  500px;*/
+}
+
+.reg-content svg line {
+  stroke-linecap: round;
+}
+
+.course {
+  display: flex;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #fafafa;
+  padding: 3px;
+  align-items: center;
+}
+
+.course-title {
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.course-credits {
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1.4;
+  opacity: 0.5;
+}
+
+.available-courses {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.available-title {
+  background: #B45C7E;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 13px;
+  border: 3px solid white;
+}
+
+
+.right-column {
+  margin-left: 30px;
 }
