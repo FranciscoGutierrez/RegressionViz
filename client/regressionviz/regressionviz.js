@@ -28,14 +28,74 @@ Template.regression.helpers({
     };
   },
   courses() {
-    return Courses.find({});
+    return Courses.find({},{sort: {credits: 1}});
   },
-  prediction() {
+  performance() {
+    return Session.get("performance");
+  },
+  prediction(){
+    var p = Session.get("performance")/100;
+    var a = Session.get("a");
+    var b = Session.get("b");
+    var r = (a * p) + b;
+    var out = { p: (p*100),r: 100-((r/20)*100)};
+    return out;
+  },
+  observations() {
+    var arr = [];
+    var color = "";
+    var a = Session.get("a");
+    var b = Session.get("b");
+    var p = 0;
+    var r = 0;
+    for (var i = 0; i<500; i++) {
+      p = (Math.random()*100)/100;
+      c = b + (Math.random() * 11) - 5;
+      r = (a * p) + c;
+      arr.push({x:p*100, y:100-((r/20)*100), color: color});
+    }
+    return arr;
   }
 });
 
 Template.regression.events({
-  'click'(event, instance) {
-    console.log(event.target);
+  "click .course"(event, instance) {
+    instance.$("#cb-"+this._id).prop("checked", !instance.$("#cb-"+this._id).prop("checked"));
   },
+  "change .performance-slider"(event, instance) {
+    Session.set("performance", instance.$(".performance-slider").val());
+  },
+  "click .select-all"(event, instance) {
+      instance.$(".ccb").prop("checked",true);
+  },
+  "click .unselect-all"(event, instance) {
+      instance.$(".ccb").prop("checked",false);
+  }
 });
+
+Template.regression.onCreated(function bodyOnCreated() {
+  Session.set("performance",50);
+  Session.set("a",14.65);
+  Session.set("b",3.86);
+});
+
+Template.regression.rendered = function () {
+  this.$("#slider").noUiSlider({
+    start: [50],
+    connect: 'lower',
+    range: {
+      'min': 0,
+      'max': 100
+    },
+    pips: { // Show a scale with the slider
+      mode: 'steps',
+      density: 2
+    }
+  }).on('slide', function (ev, val) {
+    // set real values on 'slide' event
+    Session.set("performance",val);
+  }).on('change', function (ev, val) {
+    // round off values on 'change' event
+    Session.set("performance",val);
+  });
+};

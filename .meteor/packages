@@ -11,6 +11,7 @@ blaze-html-templates    # Compile .html files into Meteor Blaze views
 reactive-var            # Reactive variable for tracker
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
+session                 # Client-side reactive dictionary for your app
 
 standard-minifier-css   # CSS minifier run for production mode
 standard-minifier-js    # JS minifier run for production mode
@@ -21,3 +22,4 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 
 mquandalle:bower          # The power of bower in meteor
+rcy:nouislider

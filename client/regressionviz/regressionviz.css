@@ -1,11 +1,18 @@
 /* CSS declarations go here */
 .reg-content {
   display: flex;
+  justify-content: center;
   font-family: Roboto, Arial, sans-serif;
   background: white;
   padding: 15px;
   margin:  7px;
   /*box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);*/
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .reg-title {
@@ -26,6 +33,7 @@
   font-weight: normal;
   line-height: 1.4;
   opacity: 0.5;
+  
 }
 
 .reg-options {
@@ -53,7 +61,7 @@
   position: relative;
   cursor: pointer;
   border-radius: 5px;
-  background: #fafafa;
+  /*background: #fafafa;*/
   padding: 3px;
   align-items: center;
 }
@@ -78,7 +86,7 @@
 }
 
 .available-courses {
-  height: 600px;
+  height: 370px;
   overflow-y: scroll;
 }
 
@@ -87,11 +95,50 @@
   color: white;
   font-weight: bold;
   text-align: center;
-  font-size: 13px;
-  border: 3px solid white;
+  font-size: 14px;
 }
 
 
 .right-column {
   margin-left: 30px;
+}
+
+.options{
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  cursor: pointer;
+}
+.options-text {
+  color: rgba(66,66,66,0.8);
+  font-size: 11px;
+  padding: 5px 0;
+  text-decoration: underline;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.select-all {
+  position: relative;
+  width: 100%;
+}
+
+.unselect-all {
+  position: relative;
+  width: 100%;
+}
+
+.options-text:hover {
+  color: #a5446b;
+}
+
+.performance-text {
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.1;
+  align-self: flex-end;
 }
