@@ -38,7 +38,7 @@ Template.regression.helpers({
     var a = Session.get("a");
     var b = Session.get("b");
     var r = (a * p) + b;
-    var out = { p: (p*100),r: 100-((r/20)*100)};
+    var out = { p: (p*100),r: 100-((r/20)*100),t: r.toFixed(2), b:(100-((r/20)*100))-2};
     return out;
   },
   observations() {
