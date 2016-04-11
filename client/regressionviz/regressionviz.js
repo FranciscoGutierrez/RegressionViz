@@ -38,7 +38,8 @@ Template.regression.helpers({
     var a = Session.get("a");
     var b = Session.get("b");
     var r = (a * p) + b;
-    var out = { p: (p*100),r: 100-((r/20)*100),t: r.toFixed(2), b:(100-((r/20)*100))-2};
+    Session.set("p",r.toFixed(2));
+    var out = { p: (p*100),r: 100-((r/20)*100),t: r.toFixed(2), b:(100-((r/20)*100))-3};
     return out;
   },
   observations() {
@@ -48,13 +49,18 @@ Template.regression.helpers({
     var b = Session.get("b");
     var p = 0;
     var r = 0;
-    for (var i = 0; i<500; i++) {
+    for (var i = 0; i<1000; i++) {
       p = (Math.random()*100)/100;
       c = b + (Math.random() * 11) - 5;
       r = (a * p) + c;
-      arr.push({x:p*100, y:100-((r/20)*100), color: color});
+      arr.push({x:(p*100).toFixed(1), y:(100-((r/20)*100)).toFixed(1), color: color});
     }
     return arr;
+  },
+  details() {
+    // var b = $("input:checked");
+    var p = parseFloat(Session.get("p"));
+    return {lwr: (p-4.91).toFixed(2), upr: (p+4.91).toFixed(2)};
   }
 });
 
@@ -66,10 +72,10 @@ Template.regression.events({
     Session.set("performance", instance.$(".performance-slider").val());
   },
   "click .select-all"(event, instance) {
-      instance.$(".ccb").prop("checked",true);
+    instance.$(".ccb").prop("checked",true);
   },
   "click .unselect-all"(event, instance) {
-      instance.$(".ccb").prop("checked",false);
+    instance.$(".ccb").prop("checked",false);
   }
 });
 
@@ -77,6 +83,8 @@ Template.regression.onCreated(function bodyOnCreated() {
   Session.set("performance",50);
   Session.set("a",14.65);
   Session.set("b",3.86);
+  Session.set("ua",4.91);
+  Session.set("ub",3.91);
 });
 
 Template.regression.rendered = function () {
@@ -92,8 +100,18 @@ Template.regression.rendered = function () {
       density: 2
     }
   }).on('slide', function (ev, val) {
-    // set real values on 'slide' event
+    var v  = parseFloat(val).toFixed(1);
+    $('circle').css("fill","#b0b0b0").promise().done(function(){
+      for(var i=0; i<10; i++) {
+        var a = (parseFloat(v)-(i/10)).toFixed(1);
+        var b = (parseFloat(v)+(i/10)).toFixed(1);
+        $('circle[cx="'+a+'%"]').each(function() { $(this).css("fill","#B45C7E"); });
+        $('circle[cx="'+b+'%"]').each(function() { $(this).css("fill","#B45C7E"); });
+      }
+    });
+    $(".main-circle").css("fill","#8c3d5e");
     Session.set("performance",val);
+
   }).on('change', function (ev, val) {
     // round off values on 'change' event
     Session.set("performance",val);

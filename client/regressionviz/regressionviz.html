@@ -67,7 +67,8 @@
               <line x1="0%" x2="100%" y1="{{dd1}}%" y2="{{dd2}}%" stroke="rgba(191, 191, 191,0.2)" stroke-width="4.2%"/>
 
               {{#each observations}}
-              <circle cx="{{x}}%" cy="{{y}}%" r="3" fill="#ca8ea6" />
+              <circle cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" />
+              <!-- <circle cx="{{x}}%" cy="{{y}}%" r="3" fill="#ca8ea6" /> -->
               {{/each}}
 
               <line x1="0%" x2="100%" y1="{{y1}}%" y2="{{y2}}%" stroke="#B45C7E" stroke-width="0.5%"/>
@@ -100,8 +101,8 @@
             </svg>
             {{#with prediction}}
             <g>
-              <rect x="-6%" y="{{b}}%" width="28" height="10" fill="white" ></rect>
-              <text x="-6%" y="{{r}}%" fill="#757575">{{t}}</text>
+              <rect x="-6%" y="{{b}}%" width="28" height="15" fill="white" ></rect>
+              <text x="-6%" y="{{r}}%" fill="#757575" text-anchor="start">{{t}}</text>
             </g>
             <!-- horizontal -->
             <line x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>
@@ -109,7 +110,7 @@
             <line x1="{{p}}%" x2="{{p}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
             <!-- <rect x="{{p}}%" y="0%" width="4%" height="100%" fill="#d4a2b5" rx="1%" ry="1%" fill-opacity="0.5"/> -->
             <!-- dot -->
-            <circle cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
+            <circle class="main-circle" cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
             {{/with}}
           </svg>
         </div>
@@ -168,15 +169,15 @@
           </div>
         </div>
         <div style="display:flex; flex-direction: row; justify-content: center;">
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.2);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.4);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.6);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.8);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,1.0);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.8);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.6);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.4);"></div>
-          <div style="width:30px; height:8px; background: rgba(191, 191, 191,0.2);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.2);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.4);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.6);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.8);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,1.0);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.8);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.6);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.4);"></div>
+          <div style="width:100%; height:8px; background: rgba(191, 191, 191,0.2);"></div>
         </div>
         <!-- <div style="display:flex; flex-direction: row; justify-content: center;">
         <div style="width:30px; height:1px; background: #e74c3c;"></div>
@@ -190,7 +191,9 @@
         <div style="width:30px; height:1px; background: #0f9d58;"></div>
       </div> -->
       <div style="display:flex; flex-direction: row; justify-content: space-between; font-size: 11px; color: rgba(66,66,66,0.7)">
-        <div>lwr</div><div>upr</div>
+        {{#with details}}
+        <div>{{lwr}}</div><div>{{upr}}</div>
+        {{/with}}
       </div>
     </div>
   </div>
