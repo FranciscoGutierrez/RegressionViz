@@ -44,23 +44,43 @@ Template.regression.helpers({
   },
   observations() {
     var arr = [];
-    var color = "";
+    var opacity = 1.0;
     var a = Session.get("a");
     var b = Session.get("b");
     var p = 0;
     var r = 0;
-    for (var i = 0; i<1000; i++) {
+    var x = 0;
+    var y = 0;
+    for (var i = 0; i<500; i++) {
       p = (Math.random()*100)/100;
-      c = b + (Math.random() * 11) - 5;
+      c = b + (Math.random() * 10) - 5;
       r = (a * p) + c;
-      arr.push({x:(p*100).toFixed(1), y:(100-((r/20)*100)).toFixed(1), color: color});
+      x = (p*100).toFixed(1);
+      y = (100-((r/20)*100)).toFixed(1)
+      arr.push({x:x, y:y, opacity: opacity});
     }
     return arr;
   },
   details() {
-    // var b = $("input:checked");
     var p = parseFloat(Session.get("p"));
-    return {lwr: (p-4.91).toFixed(2), upr: (p+4.91).toFixed(2)};
+    var u = (p+4.91).toFixed(2);
+    var l = (p-4.91).toFixed(2);
+
+    if(l<0) l = 0.00;
+
+    var g = (u-10)*10;
+    var r = (7-l)*10;
+
+    if(g<0) g = 0;
+    // if(r>7) r = 0;
+
+    var y = 100-(g+r);
+
+    console.log("r: "+r);
+    console.log("y: "+y);
+    console.log("g: "+g);
+
+    return {lwr: l, upr: u, red: r, yellow: y, green:g};
   }
 });
 
