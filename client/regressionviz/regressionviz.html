@@ -1,6 +1,35 @@
 <template name="regression">
   <div class="reg-content">
+
     <div class="left-column">
+      <div class="available">
+        <h1 class="reg-title">Courses</h1>
+        <div class="options" style="margin-top: 8px;">
+          <div class="select-all">
+            <div class="options-text">Select All</div>
+            <paper-ripple></paper-ripple>
+          </div>
+          <div class="unselect-all">
+            <div class="options-text">Unselect All</div>
+            <paper-ripple></paper-ripple>
+          </div>
+        </div>
+        <div id="availableList" class="available-courses" style="height: 576px;">
+          {{#each courses}}
+          <div class="course" id="{{this._id}}" credits="{{credits}}">
+            <input type="checkbox" class="ccb" id="cb-{{this._id}}" value="{{this._id}}" checked>
+            <div style="display: flex; flex-direction: column; margin-left: 5px;">
+              <div class="course-title">{{name}}</div>
+              <div class="course-credits">{{credits}} ects - {{hours}} hours - {{fase}} fase</div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <div class="mid-column">
       <div class="top-content">
         <h1 class="reg-title">Your Chance of Success</h1>
         <h2 class="reg-subtitle">Predict and compare your score with others based on your performance.</h2>
@@ -47,22 +76,29 @@
 
             <svg  width="100%" height="100%" style="overflow: hidden">
               {{#with regressionLine}}
-              <line x1="0%" x2="100%" y1="{{y1}}%" y2="{{y2}}%" stroke="rgba(191, 191, 191,1)"   stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{a1}}%" y2="{{a2}}%" stroke="rgba(191, 191, 191,0.8)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{b1}}%" y2="{{b2}}%" stroke="rgba(191, 191, 191,0.6)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{c1}}%" y2="{{c2}}%" stroke="rgba(191, 191, 191,0.4)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{d1}}%" y2="{{d2}}%" stroke="rgba(191, 191, 191,0.2)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{aa1}}%" y2="{{aa2}}%" stroke="rgba(191, 191, 191,0.8)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{bb1}}%" y2="{{bb2}}%" stroke="rgba(191, 191, 191,0.6)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{cc1}}%" y2="{{cc2}}%" stroke="rgba(191, 191, 191,0.4)" stroke-width="4.2%"/>
-              <line x1="0%" x2="100%" y1="{{dd1}}%" y2="{{dd2}}%" stroke="rgba(191, 191, 191,0.2)" stroke-width="4.2%"/>
+              <!-- <rect class="uncertainty" x="0%" y="100%"  width="1000000" height="50" fill="rgba(191,191,191,1)" transform="rotate(-45)"/> -->
+              <!-- <rect x="0%" y="%"  width="100%" height="80" fill="rgba(191,191,191,0.8)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="%"  width="100%" height="80" fill="rgba(191,191,191,0.6)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{c2}}%"  width="100%" height="80" fill="rgba(191,191,191,0.4)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{d2}}%"  width="100%" height="80" fill="rgba(191,191,191,0.2)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{aa2}}%" width="100%" height="80" fill="rgba(191,191,191,0.8)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{bb2}}%" width="100%" height="80" fill="rgba(191,191,191,0.6)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{cc2}}%" width="100%" height="80" fill="rgba(191,191,191,0.4)" transform="rotate(-45 200 40)"/>
+              <rect x="0%" y="{{dd2}}%" width="100%" height="80" fill="rgba(191,191,191,0.2)" transform="rotate(-45 200 40)"/> -->
 
+              <line class="uline" x1="0%" x2="100%" y1="{{y1}}%"  y2="{{y2}}%"  stroke="rgba(191,191,191,1)"   stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{a1}}%"  y2="{{a2}}%"  stroke="rgba(191,191,191,0.8)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{b1}}%"  y2="{{b2}}%"  stroke="rgba(191,191,191,0.6)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{c1}}%"  y2="{{c2}}%"  stroke="rgba(191,191,191,0.4)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{d1}}%"  y2="{{d2}}%"  stroke="rgba(191,191,191,0.2)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{aa1}}%" y2="{{aa2}}%" stroke="rgba(191,191,191,0.8)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{bb1}}%" y2="{{bb2}}%" stroke="rgba(191,191,191,0.6)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{cc1}}%" y2="{{cc2}}%" stroke="rgba(191,191,191,0.4)" stroke-width="4.2%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{dd1}}%" y2="{{dd2}}%" stroke="rgba(191,191,191,0.2)" stroke-width="4.2%"/>
               {{#each observations}}
-              <circle cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" opacity="{{opacity}}" stroke="#424242" stroke-width="0.1%"/>
-              <!-- <circle cx="{{x}}%" cy="{{y}}%" r="3" fill="#ca8ea6" /> -->
+              <circle class="observations" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#424242" stroke-width="0.1%"/>
               {{/each}}
-
-              <line x1="0%" x2="100%" y1="{{y1}}%" y2="{{y2}}%" stroke="#B45C7E" stroke-width="0.5%"/>
+              <line class="uline" x1="0%" x2="100%" y1="{{y1}}%" y2="{{y2}}%" stroke="#B45C7E" stroke-width="0.5%"/>
               {{/with}}
 
               <line x1="0%"   x2="0%"   y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
@@ -96,28 +132,34 @@
               <text x="-7%" y="{{r}}%" fill="#757575" text-anchor="start">{{t}}</text>
             </g>
             <!-- horizontal -->
-            <line x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>
+            <line class="uline" x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>
             <!-- vertical -->
-            <line x1="{{p}}%" x2="{{p}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
+            <line class="uline" x1="{{p}}%" x2="{{p}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
             <!-- <rect x="{{p}}%" y="0%" width="4%" height="100%" fill="#d4a2b5" rx="1%" ry="1%" fill-opacity="0.5"/> -->
             <!-- dot -->
-            <circle class="main-circle" cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
+            <circle class="main-circle uline" cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
             {{/with}}
           </svg>
         </div>
         <div class="reg-options">
-          <!-- <select>
-          <option value="p">Performance</option>
-          <option value="w">Workload</option>
-        </select> -->
-        <div class="performance-text"> Your performance is: <b>{{performance}}</b><span>%</span></div>
-        <div id="slider" style="margin-top: 30px; background: #B45C7E;"></div>
+          <div class="performance-text">
+            <div style="display: flex; justify-content: space-between;">
+              <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                <div class="chance-text">Your <b>performance</b> is:</div>
+                <div class="chance-sub">Adjust this value using the slider</div>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <div class="predic-text"><b>{{performance}}</b><span>%</span></div>
+                <div class="legend-sub">{{legendPerformance}}</div>
+              </div>
+            </div>
+            <div id="slider" style="margin-top: 30px; background: #B45C7E;"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="right-column">
-    <div class="asdf" style="margin-top: 30px;">
-      <div style="display:flex; flex-direction: column;">
+    <div class="right-column">
+      <div style="display:flex; flex-direction: column; width: 250px; margin-bottom: 70px;">
         <div style="display: flex; flex-direction: row; justify-content: space-around;">
           <div style="display: flex; flex-direction: column-reverse;">
             <div style="background:#B45C7E; border-radius:50%; width:10px; height: 10px; margin-top: 2px;"></div>
@@ -160,12 +202,7 @@
           </div>
         </div>
         {{#with details}}
-        <div style="display:flex; flex-direction: row; justify-content: center;">
-          <div style="width:{{red}}%;    height:6px; background: #e74c3c;"></div>
-          <div style="width:{{yellow}}%; height:6px; background: #f39c12;"></div>
-          <div style="width:{{green}}%;  height:6px; background: #0f9d58;"></div>
-        </div>
-        <div style="display:flex; flex-direction: row; justify-content: center;">
+        <div style="display:flex; flex-direction: row; justify-content: center; margin-top: 3px;">
           <div style="width:100%; height:6px; background: rgba(191, 191, 191,0.2);"></div>
           <div style="width:100%; height:6px; background: rgba(191, 191, 191,0.4);"></div>
           <div style="width:100%; height:6px; background: rgba(191, 191, 191,0.6);"></div>
@@ -176,41 +213,25 @@
           <div style="width:100%; height:6px; background: rgba(191, 191, 191,0.4);"></div>
           <div style="width:100%; height:6px; background: rgba(191, 191, 191,0.2);"></div>
         </div>
+        <div style="display:flex; flex-direction: row; justify-content: center;">
+          <div style="width:{{red}}%;    height:6px; background: #e74c3c;"></div>
+          <div style="width:{{yellow}}%; height:6px; background: #f39c12;"></div>
+          <div style="width:{{green}}%;  height:6px; background: #0f9d58;"></div>
+        </div>
         <div style="display:flex; flex-direction: row; justify-content: space-between; font-size: 11px; color: rgba(66,66,66,0.7)">
           <div style="width: 30px;">{{lwr}}</div>
           <div style="width: 30px; margin-top: -6px;"><iron-icon icon="icons:arrow-drop-up"></iron-icon></div>
           <div style="width: 30px;">{{upr}}</div>
         </div>
         {{/with}}
-      </div>
-    </div>
-    <div class="course-selection" style="margin-top: 10px;">
-      <div class="available">
-        <div class="available-title">Courses</div>
-        <div class="options">
-          <div class="select-all">
-            <div class="options-text">Select All</div>
-            <paper-ripple></paper-ripple>
-          </div>
-          <div class="unselect-all">
-            <div class="options-text">Unselect All</div>
-            <paper-ripple></paper-ripple>
-          </div>
-        </div>
-        <div id="availableList" class="available-courses">
-          {{#each courses}}
-          <div class="course" id="{{this._id}}" credits="{{credits}}">
-            <input type="checkbox" class="ccb" id="cb-{{this._id}}" checked>
-            <div style="display: flex; flex-direction: column; margin-left: 5px;">
-              <div class="course-title">{{name}}</div>
-              <div class="course-credits"><span>{{credits}}</span> ects</div>
-            </div>
-            <paper-ripple></paper-ripple>
-          </div>
-          {{/each}}
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="predic-text"><b>{{predictionValue}}</b> </div>
+          <div class="legend-sub">{{legendPrediction}}</div>
+          <div class="legend-sub" style="display: none;"><b>1</b> out of <b>20</b> students</div>
         </div>
       </div>
     </div>
+
   </div>
-</div>
 </template>

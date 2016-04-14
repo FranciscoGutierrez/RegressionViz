@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 .reg-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   font-family: Roboto, Arial, sans-serif;
   background: white;
   padding: 15px;
@@ -12,7 +12,6 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  height: 600px;
 }
 
 .reg-title {
@@ -28,12 +27,10 @@
   padding: 0;
   margin: 0;
   margin-top: 8px;
-  color: #424242;
+  color: #9E9E9E;
   font-size: 13px;
   font-weight: normal;
   line-height: 1.4;
-  opacity: 0.5;
-
 }
 
 .reg-options {
@@ -91,16 +88,20 @@
 }
 
 .available-title {
-  background: #B45C7E;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 
 .right-column {
-  margin-left: 30px;
+  min-width: 250px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .options{
@@ -110,13 +111,19 @@
   cursor: pointer;
 }
 .options-text {
-  color: rgba(66,66,66,0.8);
-  font-size: 11px;
+  color: #9E9E9E;
+  font-size: 12px;
   padding: 5px 0;
   text-decoration: underline;
   position: relative;
   width: 100%;
   text-align: center;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.options-text:hover {
+  color: #a5446b;
 }
 
 .select-all {
@@ -129,10 +136,6 @@
   width: 100%;
 }
 
-.options-text:hover {
-  color: #a5446b;
-}
-
 .performance-text {
   padding: 0;
   margin: 0;
@@ -141,4 +144,62 @@
   font-weight: 300;
   line-height: 1.1;
   align-self: flex-end;
+}
+
+.observations {
+  transition: all 600ms ease;
+}
+
+.uncertainty {
+  transition: all 900ms ease;
+}
+
+.predic-text {
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: end;
+}
+
+.predic-text span {
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+  color: #424242;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  opacity: 0.5;
+}
+
+.chance-text {
+  padding: 0;
+  margin: 0;
+  color: #424242;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.chance-sub {
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+  color: #9E9E9E;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.legend-sub {
+  padding: 0;
+  margin: 0;
+  color: #9E9E9E;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  text-align: center;
 }
