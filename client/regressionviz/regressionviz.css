@@ -4,7 +4,7 @@
   justify-content: space-around;
   font-family: Roboto, Arial, sans-serif;
   background: white;
-  padding: 15px;
+  padding: 15px 15px 0;
   /*box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);*/
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -83,7 +83,9 @@
 }
 
 .available-courses {
-  height: 370px;
+  height: 576px;
+  border-bottom: 1px solid #ECF0F1;
+  border-top: 1px solid #ECF0F1;
   overflow-y: scroll;
 }
 
@@ -146,14 +148,6 @@
   align-self: flex-end;
 }
 
-.observations {
-  transition: all 600ms ease;
-}
-
-.uncertainty {
-  transition: all 900ms ease;
-}
-
 .predic-text {
   padding: 0;
   margin: 0;
@@ -173,6 +167,20 @@
   font-weight: normal;
   line-height: 1.4;
   opacity: 0.5;
+}
+
+.ubar-container {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3px;
+  position: relative;
+}
+
+.uparrow {
+  position: absolute;
+  color: rgba(66,66,66,0.7);
+  top: 6px;
 }
 
 .chance-text {
@@ -202,4 +210,24 @@
   font-weight: normal;
   line-height: 1.4;
   text-align: center;
+}
+
+.gradebar {
+  transition: all 200ms ease-out;
+}
+
+.observations {
+  transition: all 400ms ease-out;
+}
+
+.uncertainty {
+  transition: all 900ms ease-out;
+}
+
+.udot {
+  transition: all 600ms ease-out;
+}
+
+.ubar {
+  transition: all 600ms ease-out;
 }
