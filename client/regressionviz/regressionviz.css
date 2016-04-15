@@ -12,6 +12,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border-bottom: 1px solid #ECF0F1;
 }
 
 .reg-title {
@@ -83,8 +84,6 @@
 }
 
 .available-courses {
-  height: 576px;
-  border-bottom: 1px solid #ECF0F1;
   border-top: 1px solid #ECF0F1;
   overflow-y: scroll;
 }
