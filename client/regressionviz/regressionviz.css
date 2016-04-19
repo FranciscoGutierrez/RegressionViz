@@ -45,7 +45,7 @@
 .reg-chart {
   margin-top: 15px;
   height: 400px;
-  /*width:  500px;*/
+  width:  400px;
 }
 
 .reg-content svg line {
@@ -227,6 +227,18 @@
   transition: all 600ms ease-out;
 }
 
+.uline {
+  transition: all 600ms ease-out;
+}
+
 .ubar {
   transition: all 600ms ease-out;
+}
+
+.performance-explain {
+  cursor: pointer;
+}
+
+.performance-explain:hover {
+  color: #666666;
 }

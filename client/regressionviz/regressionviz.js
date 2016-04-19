@@ -1,4 +1,9 @@
+/*Publish - subscribe */
 Courses  = new Meteor.Collection('courses');
+Grades   = new Meteor.Collection('studentscourses');
+Meteor.subscribe("this_courses");
+/*Publish - subscribe */
+
 Session.setDefault("a", 2);
 Session.setDefault("b", 12);
 Session.setDefault("p", 11.70);
@@ -15,38 +20,41 @@ Template.regression.helpers({
     var upprMax = Session.get("upprMax");
     var upprMin = Session.get("upprMin");
     if(a) {
-      y1 = 100-(a/20)*100;
-      y2 = 100-((b+a)/20)*100;
+      y1 = 400-(a/20)*400;
+      y2 = 400-((b+a)/20)*400;
+
+      console.log(a);
+      console.log(b+a);
     }
     return {
       y1: y1,
       y2: y2,
-      a1: y1+(((a-upprMin)/5)/20)*100,
-      a2: y2+((((a+b)-upprMax)/5)/20)*100,
-      b1: y1+((((a-upprMin)/5)/20)*100)*2,
-      b2: y2+(((((a+b)-upprMax)/5)/20)*100)*2,
-      c1: y1+((((a-upprMin)/5)/20)*100)*3,
-      c2: y2+(((((a+b)-upprMax)/5)/20)*100)*3,
+      a1: y1+(((a-upprMin)/5)/20)*400,
+      a2: y2+((((a+b)-upprMax)/5)/20)*400,
+      b1: y1+((((a-upprMin)/5)/20)*400)*2,
+      b2: y2+(((((a+b)-upprMax)/5)/20)*400)*2,
+      c1: y1+((((a-upprMin)/5)/20)*400)*3,
+      c2: y2+(((((a+b)-upprMax)/5)/20)*400)*3,
       d1: y1+((((a-upprMin)/5)/20)*100)*4,
-      d2: y2+(((((a+b)-upprMax)/5)/20)*100)*4,
-      e1: 100-(lwrMin/20)*100,
-      e2: 100-(lwrMax/20)*100,
-      aa1: y1+(((a-lwrMin)/5)/20)*100,
-      aa2: y2+((((a+b)-lwrMax)/5)/20)*100,
-      bb1: y1+((((a-lwrMin)/5)/20)*100)*2,
-      bb2: y2+(((((a+b)-lwrMax)/5)/20)*100)*2,
-      cc1: y1+((((a-lwrMin)/5)/20)*100)*3,
-      cc2: y2+(((((a+b)-lwrMax)/5)/20)*100)*3,
-      dd1: y1+((((a-lwrMin)/5)/20)*100)*4,
-      dd2: y2+(((((a+b)-lwrMax)/5)/20)*100)*4,
-      ee1: 100-(upprMin/20)*100,
-      ee2: 100-(upprMax/20)*100,
+      d2: y2+(((((a+b)-upprMax)/5)/20)*400)*4,
+      e1: 400-(lwrMin/20)*400,
+      e2: 400-(lwrMax/20)*400,
+      aa1: y1+(((a-lwrMin)/5)/20)*400,
+      aa2: y2+((((a+b)-lwrMax)/5)/20)*400,
+      bb1: y1+((((a-lwrMin)/5)/20)*400)*2,
+      bb2: y2+(((((a+b)-lwrMax)/5)/20)*400)*2,
+      cc1: y1+((((a-lwrMin)/5)/20)*400)*3,
+      cc2: y2+(((((a+b)-lwrMax)/5)/20)*400)*3,
+      dd1: y1+((((a-lwrMin)/5)/20)*400)*4,
+      dd2: y2+(((((a+b)-lwrMax)/5)/20)*400)*4,
+      ee1: 400-(upprMin/20)*400,
+      ee2: 400-(upprMax/20)*400,
       ratiolwr: Math.abs((((a-lwrMax)/5)/20)*100),
       ratioupr: Math.abs((((a-upprMax)/5)/20)*100)
     };
   },
   courses() {
-    return Courses.find({},{sort: {credits: 1}});
+    return Courses.find({},{sort: {name: 1}});
   },
   performance() {
     return Math.round(Session.get("performance"));
@@ -90,99 +98,43 @@ Template.regression.helpers({
     var arr = [];
     var a = Session.get("a");
     var b = Session.get("b");
-
     var lwrMin = Session.get("lwrMin");
     var lwrMax = Session.get("lwrMax");
     var upprMax = Session.get("upprMax");
     var upprMin = Session.get("upprMin");
 
-    var y1 = 100-(a/20)*100;
-    var y2 = 100-((b+a)/20)*100;
-    var a1 = y1+(((a-upprMin)/5)/20)*100;
-    var a2 = y2+((((a+b)-upprMax)/5)/20)*100;
-    var b1 = y1+((((a-upprMin)/5)/20)*100)*2;
-    var b2 = y2+(((((a+b)-upprMax)/5)/20)*100)*2;
-    var c1 = y1+((((a-upprMin)/5)/20)*100)*3;
-    var c2 = y2+(((((a+b)-upprMax)/5)/20)*100)*3;
-    var d1 = y1+((((a-upprMin)/5)/20)*100)*4;
-    var d2 = y2+(((((a+b)-upprMax)/5)/20)*100)*4;
-    var e1 = 100-(lwrMin/20)*100;
-    var e2 = 100-(lwrMax/20)*100;
-    var aa1 = y1+(((a-lwrMin)/5)/20)*100;
-    var aa2 = y2+((((a+b)-lwrMax)/5)/20)*100;
-    var bb1 = y1+((((a-lwrMin)/5)/20)*100)*2;
-    var bb2 = y2+(((((a+b)-lwrMax)/5)/20)*100)*2;
-    var cc1 = y1+((((a-lwrMin)/5)/20)*100)*3;
-    var cc2 = y2+(((((a+b)-lwrMax)/5)/20)*100)*3;
-    var dd1 = y1+((((a-lwrMin)/5)/20)*100)*4;
-    var dd2 = y2+(((((a+b)-lwrMax)/5)/20)*100)*4;
-    var ee1 = 100-(upprMin/20)*100;
-    var ee2 = 100-(upprMax/20)*100;
+    var courses = $('input:checkbox:checked').map(function () {
+      return this.value;
+    }).get();
 
-
-    for (var i = 0; i<10; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var y = (Math.random()*100).toFixed(1);
-      arr.push({x:x, y:y});
+    if (courses.length > 11) {
+      var y1 = 100-(a/20)*100;
+      var y2 = 100-((b+a)/20)*100;
+      var dd1 = y1+((((a-lwrMin)/5)/20)*100)*4;
+      var dd2 = y2+(((((a+b)-lwrMax)/5)/20)*100)*4;
+      for (var i = 0; i<120; i++) {
+        var x = (Math.random()*100).toFixed(1);
+        var z = x/100 + _.random(0, 100-y2)/100;
+        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
+      }
+      for (var i = 0; i<200; i++) {
+        var x = (Math.random()*100).toFixed(1);
+        var z = x/100 + _.random(-10, 10)/100;
+        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
+      }
+      for (var i = 0; i<120; i++) {
+        var x = (Math.random()*100).toFixed(1);
+        var z = x/100 + _.random(0, (-1)*dd2)/100;
+        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
+      }
     }
-
-    for (var i = 0; i<200; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(0, 10)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
+    else {
+      var selected = Grades.find({ "code":{ $in: courses  }}).fetch();
+      for(var i = 0; i<selected.length; i++) {
+        arr.push({ x : (selected[i].performance * 100).toFixed(1), y: 100-((selected[i].score/20)  * 100)});
+      }
     }
-
-    for (var i = 0; i<100; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(10,20)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-    for (var i = 0; i<50; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(20, 30)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-    for (var i = 0; i<25; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(30, 40)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-
-    for (var i = 0; i<200; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(0, -10)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-    for (var i = 0; i<100; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(-10,-20)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-    for (var i = 0; i<50; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(-20, -30)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
-    for (var i = 0; i<25; i++) {
-      var x = (Math.random()*100).toFixed(1);
-      var z = x/100 + _.random(-30, -40)/100;
-      var r = a + (b * z);
-      arr.push({x:x, y:100-((r/20)*100)});
-    }
-
+    console.log(arr);
     return arr;
   },
   details() {
@@ -212,22 +164,21 @@ Template.regression.helpers({
     Session.set("lwr",l);
     Session.set("upr",u);
 
-
     return {
       lwr: l,
       upr: u,
       red: r,
       yellow: y,
       green:g,
-      ua1: ratioUpr*5,
-      ua2: ratioUpr*4,
-      ua3: ratioUpr*3,
-      ua4: ratioUpr*2,
-      ua5: ratioUpr+ratioLwr,
-      ua6: ratioLwr*2,
-      ua7: ratioLwr*3,
-      ua8: ratioLwr*4,
-      ua9: ratioLwr*5
+      ua1: ratioLwr*4,
+      ua2: ratioLwr*4,
+      ua3: ratioLwr*4,
+      ua4: ratioLwr*4,
+      ua5: (ratioUpr+ratioLwr)*4,
+      ua6: ratioUpr*4,
+      ua7: ratioUpr*4,
+      ua8: ratioUpr*4,
+      ua9: ratioUpr*4
     };
   },
   size() {
@@ -256,6 +207,7 @@ Template.regression.events({
       });
     } else {
       var courses = Courses.find({ "_id":{ $in: arr  }}).fetch();
+      if (arr.length < 11) Meteor.subscribe("grades", arr);
       var a = 0;
       var b = 0;
       var maxFit = 0;
@@ -321,17 +273,17 @@ Template.regression.events({
     $(".observations").css("fill", "#b0b0b0");
   },
   "click .unselect-all"(event, instance) {
-    $(".uline").fadeOut("fast", function() {
-      instance.$(".ccb").prop("checked",false);
-      Session.set("a",0);
-      Session.set("b",0);
-      Session.set("maxFit",0);
-      Session.set("minFit",0);
-      Session.set("lwrMin",0);
-      Session.set("lwrMax",0);
-      Session.set("upprMax",0);
-      Session.set("upprMin",0);
-    });
+    $(".uline").fadeOut();
+    $(".observations").fadeOut();
+    instance.$(".ccb").prop("checked",false);
+    Session.set("a",0);
+    Session.set("b",0);
+    Session.set("maxFit",0);
+    Session.set("minFit",0);
+    Session.set("lwrMin",0);
+    Session.set("lwrMax",0);
+    Session.set("upprMax",0);
+    Session.set("upprMin",0);
   }
 });
 

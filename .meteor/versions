@@ -1,5 +1,4 @@
 allow-deny@1.0.3
-autopublish@1.0.6
 autoupdate@1.2.7
 babel-compiler@6.6.1
 babel-runtime@0.1.7
@@ -47,6 +46,7 @@ modules-runtime@0.6.2
 mongo@1.1.6
 mongo-id@1.0.3
 mquandalle:bower@1.5.2_1
+natestrauser:animate-css@3.5.1
 npm-mongo@1.4.42
 observe-sequence@1.0.10
 ordered-dict@1.0.6
