@@ -66,201 +66,188 @@
             <line x1="50%"  x2="40%" y1="100%" y2="100%" stroke="#f39c12" stroke-width="0.4%"/>
             <line x1="100%" x2="50%" y1="100%" y2="100%" stroke="#0f9d58" stroke-width="0.4%"/> -->
             <svg  width="100%" height="100%" style="overflow: hidden">
-            {{#with regressionLine}}
-            <path class="uline animated fadeIn" d="M0 {{d1}}  L400   {{d2}}" stroke="#f9f9f9" stroke-width="{{ratioupr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{dd1}} L400  {{dd2}}" stroke="#f9f9f9" stroke-width="{{ratiolwr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{c1}}  L400   {{c2}}" stroke="#e5e5e5" stroke-width="{{ratioupr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{cc1}} L400  {{cc2}}" stroke="#e5e5e5" stroke-width="{{ratiolwr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{b1}}  L400   {{b2}}" stroke="#d2d2d2" stroke-width="{{ratioupr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{bb1}} L400  {{bb2}}" stroke="#d2d2d2" stroke-width="{{ratiolwr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{a1}}  L400   {{a2}}" stroke="#bababa" stroke-width="{{ratioupr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{aa1}} L400  {{aa2}}" stroke="#bababa" stroke-width="{{ratiolwr}}%"/>
-            <path class="uline animated fadeIn" d="M0 {{y1}}  L400   {{y2}}" stroke="#9e9e9e" stroke-width="{{ratioupr}}%"/>
-            <!-- <line class="uline" x1="0%" x2="100%" y1="{{e1}}%"  y2="{{e2}}%"  stroke="rgba(191,191,191,0.2)" stroke-width="0.5%"/> -->
-            <!-- <line class="uline" x1="0%" x2="100%" y1="{{ee1}}%" y2="{{ee2}}%" stroke="rgba(191,191,191,0.2)" stroke-width="0.5%"/> -->
-            {{#each observations}}
-            <!-- <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/> -->
-            {{/each}}
-            <path class="uline animated fadeIn" d="M0 {{y1}}  L400   {{y2}}" stroke="#B45C7E" stroke-width="0.5%"/>
+              {{#with regressionLine}}
+              <path class="uline animated fadeIn" d="M0  {{e1}} L400  {{e2}} L400  {{re2}} L0  {{re1}} Z" fill="#f9f9f9"/>
+              <path class="uline animated fadeIn" d="M0 {{ee1}} L400 {{ee2}} L400 {{ree2}} L0 {{ree1}} Z" fill="#f9f9f9"/>
+              <path class="uline animated fadeIn" d="M0  {{d1}} L400  {{d2}} L400  {{rd2}} L0  {{rd1}} Z" fill="#e5e5e5"/>
+              <path class="uline animated fadeIn" d="M0 {{dd1}} L400 {{dd2}} L400 {{rdd2}} L0 {{rdd1}} Z" fill="#e5e5e5"/>
+              <path class="uline animated fadeIn" d="M0  {{c1}} L400  {{c2}} L400  {{rc2}} L0  {{rc1}} Z" fill="#d2d2d2"/>
+              <path class="uline animated fadeIn" d="M0 {{cc1}} L400 {{cc2}} L400 {{rcc2}} L0 {{rcc1}} Z" fill="#d2d2d2"/>
+              <path class="uline animated fadeIn" d="M0  {{b1}} L400  {{b2}} L400  {{rb2}} L0  {{rb1}} Z" fill="#bababa"/>
+              <path class="uline animated fadeIn" d="M0 {{bb1}} L400 {{bb2}} L400 {{rbb2}} L0 {{rbb1}} Z" fill="#bababa"/>
+              <path class="uline animated fadeIn" d="M0  {{a1}} L400  {{a2}} L400  {{ra2}} L0  {{ra1}} Z" fill="#9e9e9e"/>
+              <path class="uline animated fadeIn" d="M0 {{aa1}} L400 {{aa2}} L400 {{raa2}} L0 {{raa1}} Z" fill="#9e9e9e"/>
+              {{#each observations}}
+              <!-- <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/> -->
+              {{/each}}
+              <path class="uline animated fadeIn" d="M0 {{y1}} L400 {{y2}}" stroke="#B45C7E" stroke-width="0.5%"/>
+              {{/with}}
+
+              <line x1="0%"   x2="0%"   y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="10%"  x2="10%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="20%"  x2="20%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="30%"  x2="30%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="40%"  x2="40%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="50%"  x2="50%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="60%"  x2="60%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="70%"  x2="70%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="80%"  x2="80%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="90%"  x2="90%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="100%" x2="100%" y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+
+              <line x1="0%" x2="100%" y1="0%"   y2="0%"  stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="10%"  y2="10%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="20%"  y2="20%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="30%"  y2="30%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="40%"  y2="40%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="50%"  y2="50%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="60%"  y2="60%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="70%"  y2="70%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="80%"  y2="80%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="90%"  y2="90%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+              <line x1="0%" x2="100%" y1="100%" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
+
+            </svg>
+            {{#with prediction}}
+            <g>
+              <rect x="-7%" y="{{b}}%" width="28" height="15" fill="white" ></rect>
+              <text x="-7%" y="{{r}}%" fill="#757575" text-anchor="start">{{t}}</text>
+            </g>
+            <!-- horizontal -->
+            <line class="uline" x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>
+            <!-- vertical -->
+            <line class="uline" x1="{{p}}%" x2="{{p}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
+            <!-- <rect x="{{p}}%" y="0%" width="4%" height="100%" fill="#d4a2b5" rx="1%" ry="1%" fill-opacity="0.5"/> -->
+            <!-- dot -->
+            <circle class="main-circle" cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
             {{/with}}
+            <line x1="0%"  x2="0%" y1="100%" y2="65%" stroke="#e74c3c" stroke-width="0.5%"/>
+            <line x1="0%"  x2="0%" y1="65%"  y2="50%" stroke="#f39c12" stroke-width="0.5%"/>
+            <line x1="0%"  x2="0%" y1="50%"  y2="0%" stroke="#0f9d58" stroke-width="0.5%"/>
 
-            <line x1="0%"   x2="0%"   y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="10%"  x2="10%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="20%"  x2="20%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="30%"  x2="30%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="40%"  x2="40%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="50%"  x2="50%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="60%"  x2="60%"  y1="0" y2="100%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="70%"  x2="70%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="80%"  x2="80%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="90%"  x2="90%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="100%" x2="100%" y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-
-            <line x1="0%" x2="100%" y1="0%"   y2="0%"  stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="10%"  y2="10%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="20%"  y2="20%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="30%"  y2="30%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="40%"  y2="40%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="50%"  y2="50%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="60%"  y2="60%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="70%"  y2="70%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="80%"  y2="80%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="90%"  y2="90%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-            <line x1="0%" x2="100%" y1="100%" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
-
+            <line x1="100%"  x2="100%" y1="100%" y2="65%" stroke="#e74c3c" stroke-width="0.5%"/>
+            <line x1="100%"  x2="100%" y1="65%"  y2="50%" stroke="#f39c12" stroke-width="0.5%"/>
+            <line x1="100%"  x2="100%" y1="50%"  y2="0%" stroke="#0f9d58" stroke-width="0.5%"/>
           </svg>
-          {{#with prediction}}
-          <g>
-            <rect x="-7%" y="{{b}}%" width="28" height="15" fill="white" ></rect>
-            <text x="-7%" y="{{r}}%" fill="#757575" text-anchor="start">{{t}}</text>
-          </g>
-          <!-- horizontal -->
-          <line class="uline" x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>
-          <!-- vertical -->
-          <line class="uline" x1="{{p}}%" x2="{{p}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
-          <!-- <rect x="{{p}}%" y="0%" width="4%" height="100%" fill="#d4a2b5" rx="1%" ry="1%" fill-opacity="0.5"/> -->
-          <!-- dot -->
-          <circle class="main-circle" cx="{{p}}%" cy="{{r}}%" r="5" fill="#8c3d5e"/>
-          {{/with}}
-          <line x1="0%"  x2="0%" y1="100%" y2="65%" stroke="#e74c3c" stroke-width="0.5%"/>
-          <line x1="0%"  x2="0%" y1="65%"  y2="50%" stroke="#f39c12" stroke-width="0.5%"/>
-          <line x1="0%"  x2="0%" y1="50%"  y2="0%" stroke="#0f9d58" stroke-width="0.5%"/>
-
-          <line x1="100%"  x2="100%" y1="100%" y2="65%" stroke="#e74c3c" stroke-width="0.5%"/>
-          <line x1="100%"  x2="100%" y1="65%"  y2="50%" stroke="#f39c12" stroke-width="0.5%"/>
-          <line x1="100%"  x2="100%" y1="50%"  y2="0%" stroke="#0f9d58" stroke-width="0.5%"/>
-        </svg>
-      </div>
-      <div class="reg-options">
-        <div class="performance-text">
-          <div style="display: flex; justify-content: space-between;">
-            <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-              <div class="chance-text">Your <b class="performance-explain">performance</b> is:</div>
-              <div class="chance-sub">Adjust this value using the slider</div>
+        </div>
+        <div class="reg-options">
+          <div class="performance-text">
+            <div style="display: flex; justify-content: space-between;">
+              <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                <div class="chance-text">Your <b class="performance-explain">performance</b> is:</div>
+                <div class="chance-sub">Adjust this value using the slider</div>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <div class="predic-text"><b>{{performance}}</b><span>%</span></div>
+                <div class="legend-sub">{{legendPerformance}}</div>
+              </div>
             </div>
-            <div style="display: flex; flex-direction: column;">
-              <div class="predic-text"><b>{{performance}}</b><span>%</span></div>
-              <div class="legend-sub">{{legendPerformance}}</div>
+            <div id="slider" style="margin-top: 30px; background: #B45C7E;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div style="display:flex; flex-direction: column; width: 300px; margin-bottom: 70px;">
+        {{#with details}}
+        <div class="ubar-container">
+          <div class="u-content uc1" style="width:{{ua1}}%;">
+            <div class="ubar" style="background: #f9f9f9;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua1"></div>
             </div>
           </div>
-          <div id="slider" style="margin-top: 30px; background: #B45C7E;"></div>
+          <div class="u-content uc2" style="width:{{ua2}}%;">
+            <div class="ubar" style="background: #e5e5e5;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua2"></div>
+              <div class="udot ua2"></div>
+            </div>
+          </div>
+          <div class="u-content uc3" style="width:{{ua3}}%;">
+            <div class="ubar" style="background: #d2d2d2;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua3"></div>
+              <div class="udot ua3"></div>
+              <div class="udot ua3"></div>
+            </div>
+          </div>
+          <div class="u-content uc4" style="width:{{ua4}}%;">
+            <div class="ubar" style="background: #bababa;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua4"></div>
+              <div class="udot ua4"></div>
+              <div class="udot ua4"></div>
+            </div>
+          </div>
+          <div class="u-content uc5" style="width:{{ua5}}%;">
+            <div class="ubar mid-ubar" style="background:#9e9e9e;">
+              <iron-icon class="uparrow" icon="icons:arrow-drop-up"></iron-icon>
+            </div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua5"></div>
+              <div class="udot ua5"></div>
+              <div class="udot ua5"></div>
+              <div class="udot ua5"></div>
+            </div>
+          </div>
+          <div class="u-content uc6" style="width:{{ua6}}%;">
+            <div class="ubar" style="background: #9e9e9e;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+            </div>
+          </div>
+          <div class="u-content uc7" style="width:{{ua7}}%;">
+            <div class="ubar" style="background: #bababa;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+            </div>
+          </div>
+          <div class="u-content uc8" style="width:{{ua8}}%;">
+            <div class="ubar" style="background: #d2d2d2;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua8"></div>
+              <div class="udot ua8"></div>
+              <div class="udot ua8"></div>
+            </div>
+          </div>
+          <div class="u-content uc9" style="width:{{ua9}}%;">
+            <div class="ubar" style="background: #e5e5e5;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua9"></div>
+              <div class="udot ua9"></div>
+            </div>
+          </div>
+          <div class="u-content uc10" style="width:{{ua10}}%;">
+            <div class="ubar" style="background: #f9f9f9;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua10"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center;">
+          <div class="gradebar" style="width:{{red}}%;    height:3px; background: #e74c3c;"></div>
+          <div class="gradebar" style="width:{{yellow}}%; height:3px; background: #f39c12;"></div>
+          <div class="gradebar" style="width:{{green}}%;  height:3px; background: #0f9d58;"></div>
+        </div>
+        <div style="position: relative; display:flex; flex-direction: row; justify-content: space-between; font-size: 11px; color: rgba(66,66,66,0.7)">
+          <div style="width: 30px;">{{lwr}}</div>
+          <div style="width: 30px; text-align: end;">{{upr}}</div>
+        </div>
+        {{/with}}
+
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="predic-text"><b>{{predictionValue}}</b> </div>
+          <div class="legend-sub">{{legendPrediction}}</div>
+          <div class="legend-sub"><b>{{size}}</b> out of <b>20</b> students</div>
         </div>
       </div>
     </div>
+
   </div>
-  <div class="right-column">
-    <div style="display:flex; flex-direction: column; width: 300px; margin-bottom: 70px;">
-      <div style="display: flex; flex-direction: row; justify-content: space-around;">
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua1" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua1" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua1" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua1" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua1" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua2" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua2" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua2" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua2" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua2" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua3" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua3" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua3" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua3" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua3" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua4" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua4" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua4" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua4" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua4" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua5" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua5" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua5" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua5" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua5" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua6" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua6" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua6" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua6" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua6" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua7" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua7" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua7" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua7" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua7" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua8" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua8" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua8" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua8" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua8" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-        <div style="display: flex; flex-direction: column-reverse;">
-          <div class="udot ua9" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua9" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua9" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua9" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-          <div class="udot ua9" style="background:#B45C7E; border-radius:50%; min-width:10px; min-height: 10px; margin-top: 2px;"></div>
-        </div>
-      </div>
-
-
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{d1}}%"  y2="{{d2}}%"  stroke="#e5e5e5" stroke-width="{{ratioupr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{dd1}}%" y2="{{dd2}}%" stroke="#e5e5e5" stroke-width="{{ratiolwr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{c1}}%"  y2="{{c2}}%"  stroke="#d2d2d2" stroke-width="{{ratioupr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{cc1}}%" y2="{{cc2}}%" stroke="#d2d2d2" stroke-width="{{ratiolwr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{b1}}%"  y2="{{b2}}%"  stroke="#bababa" stroke-width="{{ratioupr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{bb1}}%" y2="{{bb2}}%" stroke="#bababa" stroke-width="{{ratiolwr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{a1}}%"  y2="{{a2}}%"  stroke="#9e9e9e" stroke-width="{{ratioupr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{aa1}}%" y2="{{aa2}}%" stroke="#9e9e9e" stroke-width="{{ratiolwr}}%"/>
-      <line class="uline animated fadeIn" x1="0%" x2="100%" y1="{{y1}}%"  y2="{{y2}}%"  stroke="#868686" stroke-width="{{ratioupr}}%"/>
-
-      {{#with details}}
-      <div class="ubar-container">
-        <div class="ubar" style="width:{{ua1}}%; height:10px; background: #e5e5e5;"></div>
-        <div class="ubar" style="width:{{ua2}}%; height:10px; background: #d2d2d2;"></div>
-        <div class="ubar" style="width:{{ua3}}%; height:10px; background: #bababa;"></div>
-        <div class="ubar" style="width:{{ua4}}%; height:10px; background: #9e9e9e;"></div>
-        <div class="ubar mid-ubar" style="width:{{ua5}}%; height:10px; background:#868686;">
-          <iron-icon class="uparrow" icon="icons:arrow-drop-up"></iron-icon>
-        </div>
-        <div class="ubar" style="width:{{ua6}}%; height:10px; background: #9e9e9e;"></div>
-        <div class="ubar" style="width:{{ua7}}%; height:10px; background: #bababa;"></div>
-        <div class="ubar" style="width:{{ua8}}%; height:10px; background: #d2d2d2;"></div>
-        <div class="ubar" style="width:{{ua9}}%; height:10px; background: #e5e5e5;"></div>
-      </div>
-      <div style="display:flex; flex-direction: row; justify-content: center;">
-        <div class="gradebar" style="width:{{red}}%;    height:3px; background: #e74c3c;"></div>
-        <div class="gradebar" style="width:{{yellow}}%; height:3px; background: #f39c12;"></div>
-        <div class="gradebar" style="width:{{green}}%;  height:3px; background: #0f9d58;"></div>
-      </div>
-      <div style="position: relative; display:flex; flex-direction: row; justify-content: space-between; font-size: 11px; color: rgba(66,66,66,0.7)">
-        <div style="width: 30px;">{{lwr}}</div>
-        <div style="width: 30px; text-align: end;">{{upr}}</div>
-      </div>
-      {{/with}}
-
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <div class="predic-text"><b>{{predictionValue}}</b> </div>
-        <div class="legend-sub">{{legendPrediction}}</div>
-        <div class="legend-sub"><b>{{size}}</b> out of <b>20</b> students</div>
-      </div>
-    </div>
-  </div>
-
-</div>
 </template>
