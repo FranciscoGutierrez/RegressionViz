@@ -4,14 +4,14 @@ Grades   = new Meteor.Collection('studentscourses');
 Meteor.subscribe("this_courses");
 /*Publish - subscribe */
 
-Session.setDefault("a", 0);
-Session.setDefault("b", 0);
-Session.setDefault("p", 0);
-Session.setDefault("performance", 0);
-Session.setDefault("lwrMin",0);
-Session.setDefault("lwrMax",0);
-Session.setDefault("upprMax",0);
-Session.setDefault("upprMin",0);
+Session.setDefault("a", 1);
+Session.setDefault("b", 1);
+Session.setDefault("p", 1);
+Session.setDefault("performance", 80);
+Session.setDefault("lwrMin",1);
+Session.setDefault("lwrMax",1);
+Session.setDefault("upprMax",1);
+Session.setDefault("upprMin",1);
 
 Template.regression.helpers({
   regressionLine() {
@@ -154,7 +154,7 @@ Template.regression.helpers({
         arr.push({ x : (selected[i].performance * 100).toFixed(1), y: 100-((selected[i].score/20)  * 100)});
       }
     }
-    console.log(arr);
+    // console.log(arr);
     return arr;
   },
   details() {
@@ -193,11 +193,12 @@ Template.regression.helpers({
       ua3: ratioLwr*4,
       ua4: ratioLwr*4,
       ua5: ratioLwr*4,
-      ua6: ratioUpr*4,
+      ua6: (ratioUpr/2)*4, // Center... purple..
       ua7: ratioUpr*4,
       ua8: ratioUpr*4,
       ua9: ratioUpr*4,
-      ua10: ratioUpr*4
+      ua10: ratioUpr*4,
+      ua11: ratioUpr*4
     };
   },
   size() {
@@ -365,7 +366,7 @@ Template.regression.rendered = function () {
     Session.get("upr");
     Session.get("p");
     Session.get("lwr");
-    var size = _.random(8, 8);
+    var size = _.random(6, 6);
     $(".ua5:lt("+size+")").css("opacity","1");
     /******/
     Session.set("size", size);

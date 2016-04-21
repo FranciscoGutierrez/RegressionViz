@@ -8,5 +8,4 @@ Meteor.publish("this_courses", function () {
 Meteor.publish('grades', function(who){
   var size = who.length * 100;
   return Grades.find({code:{$in:who}}, {limit: size});
-  // return Grades.find({code:{$in:who}});
 });

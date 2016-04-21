@@ -185,47 +185,56 @@
               <div class="udot ua4"></div>
               <div class="udot ua4"></div>
               <div class="udot ua4"></div>
+              <div class="udot ua4"></div>
             </div>
           </div>
           <div class="u-content uc5" style="width:{{ua5}}%;">
             <div class="ubar mid-ubar" style="background:#9e9e9e;">
-              <iron-icon class="uparrow" icon="icons:arrow-drop-up"></iron-icon>
+              <!-- <iron-icon class="uparrow" icon="icons:arrow-drop-up"></iron-icon> -->
+              <div class="uparrow"><b>{{predictionValue}}</b></div>
             </div>
             <div style="display: flex; flex-direction: column-reverse;">
               <div class="udot ua5"></div>
               <div class="udot ua5"></div>
               <div class="udot ua5"></div>
               <div class="udot ua5"></div>
+              <div class="udot ua5"></div>
             </div>
           </div>
-          <div class="u-content uc6" style="width:{{ua6}}%;">
-            <div class="ubar" style="background: #9e9e9e;"></div>
-            <div style="display: flex; flex-direction: column-reverse;">
-              <div class="udot ua6"></div>
-              <div class="udot ua6"></div>
-              <div class="udot ua6"></div>
-              <div class="udot ua6"></div>
-            </div>
-          </div>
-          <div class="u-content uc7" style="width:{{ua7}}%;">
+          <div class="u-content uc6" style="width:{{ua7}}%;">
             <div class="ubar" style="background: #bababa;"></div>
             <div style="display: flex; flex-direction: column-reverse;">
-              <div class="udot ua7"></div>
-              <div class="udot ua7"></div>
-              <div class="udot ua7"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
+              <div class="udot ua6"></div>
             </div>
           </div>
-          <div class="u-content uc8" style="width:{{ua8}}%;">
+          <div class="u-content uc7" style="width:{{ua8}}%;">
             <div class="ubar" style="background: #d2d2d2;"></div>
             <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+              <div class="udot ua7"></div>
+            </div>
+          </div>
+          <div class="u-content uc8" style="width:{{ua9}}%;">
+            <div class="ubar" style="background: #e5e5e5;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua8"></div>
               <div class="udot ua8"></div>
               <div class="udot ua8"></div>
               <div class="udot ua8"></div>
             </div>
           </div>
-          <div class="u-content uc9" style="width:{{ua9}}%;">
-            <div class="ubar" style="background: #e5e5e5;"></div>
+          <div class="u-content uc9" style="width:{{ua10}}%;">
+            <div class="ubar" style="background: #f9f9f9;"></div>
             <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua9"></div>
               <div class="udot ua9"></div>
               <div class="udot ua9"></div>
             </div>
@@ -234,23 +243,32 @@
             <div class="ubar" style="background: #f9f9f9;"></div>
             <div style="display: flex; flex-direction: column-reverse;">
               <div class="udot ua10"></div>
+              <div class="udot ua10"></div>
+            </div>
+          </div>
+          <div class="u-content uc11" style="width:{{ua10}}%;">
+            <div class="ubar" style="background: #f9f9f9;"></div>
+            <div style="display: flex; flex-direction: column-reverse;">
+              <div class="udot ua11"></div>
             </div>
           </div>
         </div>
         <div style="display:flex; flex-direction: row; justify-content: center;">
-          <div class="gradebar" style="width:{{red}}%;    height:3px; background: #e74c3c;"></div>
-          <div class="gradebar" style="width:{{yellow}}%; height:3px; background: #f39c12;"></div>
-          <div class="gradebar" style="width:{{green}}%;  height:3px; background: #0f9d58;"></div>
+          <div class="gradebar" style="width:{{red}}%;    height:5px; background: #e74c3c;"></div>
+          <div class="gradebar" style="width:{{yellow}}%; height:5px; background: #f39c12;"></div>
+          <div class="gradebar" style="width:{{green}}%;  height:5px; background: #0f9d58;"></div>
         </div>
-        <div style="position: relative; display:flex; flex-direction: row; justify-content: space-between; font-size: 11px; color: rgba(66,66,66,0.7)">
+        <div style="position: relative; display:flex; flex-direction: row; justify-content: space-between; font-size: 13px; color: rgba(66,66,66,0.7); margin-top: 2px;">
           <div style="width: 30px;">{{lwr}}</div>
           <div style="width: 30px; text-align: end;">{{upr}}</div>
         </div>
         {{/with}}
 
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          <div class="predic-text"><b>{{predictionValue}}</b> </div>
-          <div class="legend-sub">{{legendPrediction}}</div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; margin-top: 5px;">
+          <div class="legend-sub">
+            <div class="dot-legend"></div>
+            {{legendPrediction}}
+          </div>
           <div class="legend-sub"><b>{{size}}</b> out of <b>20</b> students</div>
         </div>
       </div>
