@@ -297,6 +297,12 @@ Template.regression.events({
     Session.set("lwrMax",0);
     Session.set("upprMax",0);
     Session.set("upprMin",0);
+  },
+  "mouseenter .performance-explain"(event, instance) {
+      $(".explained").fadeIn();
+  },
+  "mouseleave .performance-explain"(event, instance) {
+      $(".explained").fadeOut();
   }
 });
 

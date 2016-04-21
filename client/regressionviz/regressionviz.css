@@ -261,3 +261,37 @@
   align-items: center;
   transition: all 600ms ease-out;
 }
+
+.e-row {
+  display: flex;
+}
+
+.e-row span {
+  font-weight: 600;
+  width: 55px;
+  text-align: right;
+}
+
+.e-row div {
+  margin-left: 5px;
+  color: #757575;
+}
+
+.e-row b {
+  color: #424242;
+  font-weight: normal;
+}
+
+.explained {
+  display: none;
+  position: absolute;
+  font-size: 13px;
+  color: #424242;
+  top: -90px;
+  left: 40px;
+  background: white;
+  width: 430px;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

@@ -133,9 +133,16 @@
         <div class="reg-options">
           <div class="performance-text">
             <div style="display: flex; justify-content: space-between;">
-              <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+              <div style="display: flex; flex-direction: column; justify-content: flex-end; position: relative;">
                 <div class="chance-text">Your <b class="performance-explain">performance</b> is:</div>
                 <div class="chance-sub">Adjust this value using the slider</div>
+                <div class="explained">
+                  <div class="e-row"><span>80 - 100</span><div><b>Excellent</b>, students that never fail courses with excellent scores.</div></div>
+                  <div class="e-row"><span>60 - 80 </span><div><b>Good</b>, students that never fail courses with regular scores.</div></div>
+                  <div class="e-row"><span>40 - 60 </span><div><b>Sufficient</b>, students that get low scores but are tolerated.</div></div>
+                  <div class="e-row"><span>20 - 40 </span><div><b>More Work is Required</b>, students that fail courses.</div></div>
+                  <div class="e-row"><span> 0 - 20 </span><div><b>Insufficient</b>, students that fail many courses.</div></div>
+                </div>
               </div>
               <div style="display: flex; flex-direction: column;">
                 <div class="predic-text"><b>{{performance}}</b><span>%</span></div>
