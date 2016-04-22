@@ -203,8 +203,16 @@ Template.regression.helpers({
   },
   size() {
     return Session.get("size");
+  },
+  image(){
+    var arr = [];
+    var a = Session.get("a");
+    var courses = $('input:checkbox:checked').map(function () {
+      arr.push({ name : this.value});
+      return this.value;
+    }).get();
+    return arr;
   }
-
 });
 
 Template.regression.events({

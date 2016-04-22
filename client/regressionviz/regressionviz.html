@@ -20,7 +20,7 @@
             <input type="checkbox" class="ccb" id="cb-{{this._id}}" value="{{this._id}}">
             <div style="display: flex; flex-direction: column; margin-left: 5px;">
               <div class="course-title">{{name}}</div>
-              <div class="course-credits">{{credits}} ects - {{hours}} hours - {{fase}} fase</div>
+              <div class="course-credits">{{this._id}} - {{credits}} ects - {{hours}} hours - {{fase}} fase</div>
             </div>
             <paper-ripple></paper-ripple>
           </div>
@@ -78,7 +78,7 @@
               <path class="uline animated fadeIn" d="M0  {{a1}} L400  {{a2}} L400  {{ra2}} L0  {{ra1}} Z" fill="#9e9e9e"/>
               <path class="uline animated fadeIn" d="M0 {{aa1}} L400 {{aa2}} L400 {{raa2}} L0 {{raa1}} Z" fill="#9e9e9e"/>
               {{#each observations}}
-              <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/>
+              <!-- <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/> -->
               {{/each}}
               <path class="uline animated fadeIn" d="M0 {{y1}} L400 {{y2}}" stroke="#B45C7E" stroke-width="0.5%"/>
               {{/with}}
@@ -108,6 +108,9 @@
               <line x1="0%" x2="100%" y1="100%" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,3"/>
 
             </svg>
+            {{#each image}}
+            <image class="animated fadeIn" xlink:href="courses/{{name}}.png" x="0" y="0" height="400px" width="400px" />
+            {{/each}}
             {{#with prediction}}
             <g class="text-svg">
               <rect x="-7%" y="{{b}}%" width="28" height="15" fill="white" ></rect>
