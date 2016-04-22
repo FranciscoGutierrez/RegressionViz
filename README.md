@@ -4,11 +4,11 @@ A visualization of simple linear regression that illustrates uncertainty.
 
 # Change log
 
-# v0.1.2
+## v0.1.2
 
 <img src="public/scs2.png" height="400px">
 
-# v0.1.1
+## v0.1.1
 
 <img src="public/sc11.png" height="400px">
 <img src="public/sc12.png" height="400px">
