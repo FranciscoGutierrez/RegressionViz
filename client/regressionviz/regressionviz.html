@@ -78,7 +78,7 @@
               <path class="uline animated fadeIn" d="M0  {{a1}} L400  {{a2}} L400  {{ra2}} L0  {{ra1}} Z" fill="#9e9e9e"/>
               <path class="uline animated fadeIn" d="M0 {{aa1}} L400 {{aa2}} L400 {{raa2}} L0 {{raa1}} Z" fill="#9e9e9e"/>
               {{#each observations}}
-              <!-- <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/> -->
+              <circle class="observations animated fadeInLeft" cx="{{x}}%" cy="{{y}}%" r="3" fill="#b0b0b0" stroke="#676767" stroke-width="0.25%"/>
               {{/each}}
               <path class="uline animated fadeIn" d="M0 {{y1}} L400 {{y2}}" stroke="#B45C7E" stroke-width="0.5%"/>
               {{/with}}
@@ -109,9 +109,9 @@
 
             </svg>
             {{#with prediction}}
-            <g>
+            <g class="text-svg">
               <rect x="-7%" y="{{b}}%" width="28" height="15" fill="white" ></rect>
-              <text x="-7%" y="{{r}}%" fill="#757575" text-anchor="start">{{t}}</text>
+              <text x="-8%" y="{{r}}%" fill="#424242" text-anchor="start" style="font-weight: bold; font-size: 12px;">{{t}}</text>
             </g>
             <!-- horizontal -->
             <line class="uline" x1="0%"  x2="100%" y1="{{r}}%" y2="{{r}}%" stroke="#B45C7E" stroke-width="1"/>

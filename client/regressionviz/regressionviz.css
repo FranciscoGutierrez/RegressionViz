@@ -251,6 +251,14 @@
   transition: all 600ms ease-out;
 }
 
+.text-svg {
+  transition: all 600ms ease-out;
+}
+
+text {
+  transition: all 600ms ease-out;
+}
+
 .ubar {
   margin-top: 2px;
   width: 100%;
