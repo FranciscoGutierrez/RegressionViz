@@ -1,6 +1,6 @@
 # RegressionViz
 
-A visualization for simple linear regression that illustrates uncertainty.
+A visualization of simple linear regression that illustrates uncertainty.
 
 # Change log
 
@@ -15,4 +15,3 @@ A visualization for simple linear regression that illustrates uncertainty.
 <img src="public/sc13.png" height="400px">
 <img src="public/sc14.png" height="400px">
 <img src="public/sc15.png" height="400px">
-<img src="public/scs2.png" height="400px">
