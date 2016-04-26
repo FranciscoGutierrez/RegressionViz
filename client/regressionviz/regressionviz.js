@@ -1,17 +1,6 @@
-/*Publish - subscribe */
 Courses  = new Meteor.Collection('courses');
 Grades   = new Meteor.Collection('studentscourses');
-Meteor.subscribe("this_courses");
-/*Publish - subscribe */
-
-Session.setDefault("a", 1);
-Session.setDefault("b", 1);
-Session.setDefault("p", 1);
-Session.setDefault("performance", 80);
-Session.setDefault("lwrMin",1);
-Session.setDefault("lwrMax",1);
-Session.setDefault("upprMax",1);
-Session.setDefault("upprMin",1);
+Students = new Meteor.Collection('students');
 
 Template.regression.helpers({
   regressionLine() {
@@ -308,10 +297,10 @@ Template.regression.events({
     Session.set("upprMin",0);
   },
   "mouseenter .performance-explain"(event, instance) {
-      $(".explained").fadeIn();
+    $(".explained").fadeIn();
   },
   "mouseleave .performance-explain"(event, instance) {
-      $(".explained").fadeOut();
+    $(".explained").fadeOut();
   }
 });
 

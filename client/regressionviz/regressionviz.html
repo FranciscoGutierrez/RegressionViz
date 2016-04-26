@@ -1,9 +1,36 @@
 <template name="regression">
   <div class="reg-content">
-
     <div class="left-column">
+      <div class="passed-courses">
+        <h1 class="reg-title">Passed</h1>
+        <div id="availableList" class="available-courses" style="height: 200px;">
+          {{#each courses}}
+          <div class="course" id="{{this._id}}" credits="{{credits}}">
+            <div style="display: flex; flex-direction: column; margin-left: 5px;">
+              <div class="course-title">{{name}}</div>
+              <div class="course-credits">{{this._id}} - {{credits}} ects - {{hours}} hours - {{fase}} fase</div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="failed-courses">
+        <h1 class="reg-title">Failed</h1>
+        <div id="availableList" class="available-courses" style="height: 200px;">
+          {{#each courses}}
+          <div class="course" id="{{this._id}}" credits="{{credits}}">
+            <div style="display: flex; flex-direction: column; margin-left: 5px;">
+              <div class="course-title">{{name}}</div>
+              <div class="course-credits">{{this._id}} - {{credits}} ects - {{hours}} hours - {{fase}} fase</div>
+            </div>
+            <paper-ripple></paper-ripple>
+          </div>
+          {{/each}}
+        </div>
+      </div>
       <div class="available">
-        <h1 class="reg-title">Courses</h1>
+        <h1 class="reg-title">Available</h1>
         <div class="options" style="margin-top: 8px;">
           <div class="select-all">
             <div class="options-text">Select All</div>
@@ -14,7 +41,7 @@
             <paper-ripple></paper-ripple>
           </div>
         </div>
-        <div id="availableList" class="available-courses" style="height: 576px;">
+        <div id="availableList" class="available-courses" style="height: 200px;">
           {{#each courses}}
           <div class="course" id="{{this._id}}" credits="{{credits}}">
             <input type="checkbox" class="ccb" id="cb-{{this._id}}" value="{{this._id}}">
@@ -26,7 +53,6 @@
           </div>
           {{/each}}
         </div>
-        <div class="failed-courses"></div>
       </div>
     </div>
 
@@ -275,6 +301,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
