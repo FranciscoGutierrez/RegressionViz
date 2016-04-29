@@ -3,9 +3,12 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <title>Linear Regression Component</title>
   <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+  <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
   <link rel="import" href="bower_components/iron-icons/iron-icons.html">
   <link rel="import" href="bower_components/iron-icons/editor-icons.html">
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+  <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+  <link rel="import" href="bower_components/paper-progress/paper-progress.html">
   <style is="custom-style">
   :root {
     --paper-slider-active-color:#B25D7E;
@@ -14,4 +17,10 @@
   }
   </style>
 </head>
-<body></body>
+<body>
+  <div class="loading-screen">
+    <paper-spinner alt="Loading app..." active></paper-spinner>
+  </div>
+</body>
+
+<template name="dummy"></template>

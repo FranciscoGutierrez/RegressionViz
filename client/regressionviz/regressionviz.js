@@ -63,7 +63,30 @@ Template.regression.helpers({
     };
   },
   courses() {
-    return Courses.find({},{sort: {name: 1}});
+    var courses = Courses.find({fase: 2},{sort: {name: 1}}).fetch();
+    var p = Session.get("performance")/100;
+    for(var i=0; i<courses.length; i++) {
+      courses[i].pnow = (courses[i].a + (courses[i].b * p)).toFixed(1);
+      courses[i].difficulty = Math.round(courses[i].difficulty * 10);
+      if(courses[i].pnow<=0) courses[i].pnow = 0;
+    }
+    return courses
+  },
+  failed() {
+    var fase = Session.get("failFase");
+    var text = "eerste fase";
+    if(fase==1) text = "eerste fase";
+    if(fase==2) text = "tweede fase";
+    if(fase==3) text = "derde fase";
+    return Grades.find({student: Number(Session.get("student")), fase:text, score: { $lt : 10 }}).fetch();
+  },
+  passed() {
+    var fase = Session.get("passFase");
+    var text = "eerste fase";
+    if(fase==1) text = "eerste fase";
+    if(fase==2) text = "tweede fase";
+    if(fase==3) text = "derde fase";
+    return Grades.find({student:Number(Session.get("student")), fase:text, score:{$gte:10}}).fetch();
   },
   performance() {
     return Math.round(Session.get("performance"));
@@ -103,49 +126,6 @@ Template.regression.helpers({
     var out = { p: (p*100),r: 100-((r/20)*100),t: r.toFixed(2), b:(100-((r/20)*100))-3};
     return out;
   },
-  observations() {
-    var arr = [];
-    var a = Session.get("a");
-    var b = Session.get("b");
-    var lwrMin = Session.get("lwrMin");
-    var lwrMax = Session.get("lwrMax");
-    var upprMax = Session.get("upprMax");
-    var upprMin = Session.get("upprMin");
-
-    var courses = $('input:checkbox:checked').map(function () {
-      return this.value;
-    }).get();
-
-    if (courses.length > 11) {
-      var y1 = 100-(a/20)*100;
-      var y2 = 100-((b+a)/20)*100;
-      var dd1 = y1+((((a-lwrMin)/5)/20)*100)*4;
-      var dd2 = y2+(((((a+b)-lwrMax)/5)/20)*100)*4;
-      for (var i = 0; i<120; i++) {
-        var x = (Math.random()*100).toFixed(1);
-        var z = x/100 + _.random(0, 100-y2)/100;
-        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
-      }
-      for (var i = 0; i<200; i++) {
-        var x = (Math.random()*100).toFixed(1);
-        var z = x/100 + _.random(-10, 10)/100;
-        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
-      }
-      for (var i = 0; i<120; i++) {
-        var x = (Math.random()*100).toFixed(1);
-        var z = x/100 + _.random(0, (-1)*dd2)/100;
-        arr.push({x:x, y:100-(((a + (b * z))/20)*100)});
-      }
-    }
-    else {
-      var selected = Grades.find({ "code":{ $in: courses  }}).fetch();
-      for(var i = 0; i<selected.length; i++) {
-        arr.push({ x : (selected[i].performance * 100).toFixed(1), y: 100-((selected[i].score/20)  * 100)});
-      }
-    }
-    // console.log(arr);
-    return arr;
-  },
   details() {
     var maxFit  = Session.get("maxFit");
     var minFit  = Session.get("minFit");
@@ -153,41 +133,56 @@ Template.regression.helpers({
     var lwrMax  = Session.get("lwrMax");
     var upprMax = Session.get("upprMax");
     var upprMin = Session.get("upprMin");
-    var prediction = parseFloat(Session.get("p"));
+    var pre = parseFloat(Session.get("p"));
+    var lwr = Session.get("lwr");
+    var upr = Session.get("upr");
+
     var p = parseFloat(Session.get("performance"));
     var u = (upprMin+((upprMax-upprMin)*(p/100))).toFixed(1);
     var l = (lwrMin +((lwrMax-lwrMin)*(p/100))).toFixed(1);
 
-    var lwr = Session.get("lwr");
-    var upr = Session.get("upr");
-    var ratioUpr = (((upr - prediction)/5)/20)*100;
-    var ratioLwr = (((prediction - lwr)/5)/20)*100;
+    var ratioUpr = (((u - pre)/5)/20)*100;
+    var ratioLwr = (((pre - l)/5)/20)*100;
 
-    if(u > 20) u = 20;
-    if(l < 0)  l = 0;
-    var g = ((prediction+4.91)-10)*10;
-    var r = (7-(prediction-4.91))*10;
-    if(g<0) g = 0;
-    var y = 100-(g+r);
     Session.set("lwr",l);
     Session.set("upr",u);
+
+    var a1 = u;
+    var a2 = ((pre+((u-pre)/5)*4)).toFixed(1);
+    var a3 = ((pre+((u-pre)/5)*3)).toFixed(1);
+    var a4 = ((pre+((u-pre)/5)*2)).toFixed(1);
+    var a5 = (pre+(u-pre)/5).toFixed(1);
+    var a6 = pre;
+    var a7 = (pre-((pre-l)/5)).toFixed(1);
+    var a8 = (pre-((pre-l)/5)*2).toFixed(1);
+    var a9 = (pre-((pre-l)/5)*3).toFixed(1);
+    var a10 = (pre-((pre-l)/5)*4).toFixed(1);
+    var a11 = l;
+
     return {
-      lwr: l,
-      upr: u,
-      red: r,
-      yellow: y,
-      green:  g,
-      ua1: ratioLwr*4,
-      ua2: ratioLwr*4,
-      ua3: ratioLwr*4,
-      ua4: ratioLwr*4,
-      ua5: ratioLwr*4,
-      ua6: (ratioUpr/2)*4, // Center... purple..
-      ua7: ratioUpr*4,
-      ua8: ratioUpr*4,
-      ua9: ratioUpr*4,
-      ua10: ratioUpr*4,
-      ua11: ratioUpr*4
+      ua1: (a11<=0) ? a11 = 0 : a11,
+      ac1: (a11>=10) ? "0f9d58" : (a11<=8) ? "e74c3c": "f39c12",
+      ua2: (a10<=0) ? a10 = 0 : a10,
+      ac2: (a10>=10) ? "0f9d58" : (a10<=8) ? "e74c3c": "f39c12",
+      ua3: (a9<=0) ? a9 = 0 : a9,
+      ac3: (a9>=10) ? "0f9d58" : (a9<=8) ? "e74c3c": "f39c12",
+      ua4: (a8<=0) ? a8 = 0 : a8,
+      ac4: (a8>=10) ? "0f9d58" : (a8<=8) ? "e74c3c": "f39c12",
+      ua5: (a7<=0) ? a7 = 0 : a7,
+      ac5: (a7>=10) ? "0f9d58" : (a7<=8) ? "e74c3c": "f39c12",
+      ua6: (a6<=0) ? a6 = 0 : a6, // Center... purple..
+      ac6: (a6>=10) ? "0f9d58" : (a6<=8) ? "e74c3c": "f39c12",
+      ua7: (a5<=0) ? a5 = 0 : a5,
+      ac7: (a5>=10) ? "0f9d58" : (a5<=8) ? "e74c3c": "f39c12",
+      ua8: (a4<=0) ? a4 = 0 : a4,
+      ac8: (a4>=10) ? "0f9d58" : (a4<=8) ? "e74c3c": "f39c12",
+      ua9: (a3<=0) ? a3 = 0 : a3,
+      ac9: (a3>=10) ? "0f9d58" : (a3<=8) ? "e74c3c": "f39c12",
+      ua10:(a2<=0) ? a2 = 0 : a2,
+      ac10:(a2>=10) ? "0f9d58" : (a2<=8) ? "e74c3c": "f39c12",
+      ua11:(a1<=0) ? a1 = 0 : a1,
+      ac11:(a1>=10) ? "0f9d58" : (a1<=8) ? "e74c3c": "f39c12",
+      pred:pre
     };
   },
   size() {
@@ -201,6 +196,29 @@ Template.regression.helpers({
       return this.value;
     }).get();
     return arr;
+  },
+  overalldetails() {
+    var arr = [];
+    var a = Session.get("a");
+    var odhour = 0;
+    var odcred = 0;
+    var odcourse = 0;
+    var courses = $('input:checkbox:checked').map(function () {
+      odhour   = Courses.findOne({_id:this.value}).hours + odhour;
+      odcred   = Courses.findOne({_id:this.value}).credits + odcred;
+      odcourse = odcourse + 1;
+      return this.value;
+    }).get();
+    if(courses.length <= 0) {
+      $(".right-column-container").fadeOut();
+    } else {
+      $(".right-column-container").fadeIn();
+    }
+    return {
+      odcred: odcred,
+      odcourse: odcourse,
+      odhour: odhour
+    };
   }
 });
 
@@ -222,7 +240,6 @@ Template.regression.events({
       Session.set("upprMin",0);
     } else {
       var courses = Courses.find({ "_id":{ $in: arr  }}).fetch();
-      if (arr.length < 11) Meteor.subscribe("grades", arr);
       var a = 0;
       var b = 0;
       var maxFit = 0;
@@ -296,48 +313,67 @@ Template.regression.events({
     Session.set("upprMax",0);
     Session.set("upprMin",0);
   },
-  "mouseenter .performance-explain"(event, instance) {
-    $(".explained").fadeIn();
+  "click .adjust-value"(event, instance) {
+    instance.$("#slider").fadeIn();
+    instance.$(".adjust-value").text("reset");
+    instance.$(".adjust-value").addClass("reset-value");
+    instance.$(".chance-sub").text("Based in your custom selection.");
   },
-  "mouseleave .performance-explain"(event, instance) {
-    $(".explained").fadeOut();
+  "click .reset-value"(event, instance) {
+    instance.$("#slider").fadeOut();
+    instance.$(".adjust-value").text("adjust");
+    instance.$(".chance-sub").text("Based in your score records.");
+    instance.$(".adjust-value").removeClass("reset-value");
+    Session.set("performance", (Students.findOne().performance/20)*100);
+    instance.$("#slider").val(Session.get("performance"));
+  },
+  "click .p-fase1"(event, instance) {
+    Session.set("passFase",1);
+    instance.$(".p-fase3").removeClass("fase-selected");
+    instance.$(".p-fase2").removeClass("fase-selected");
+    instance.$(".p-fase1").addClass("fase-selected");
+  },
+  "click .p-fase2"(event, instance) {
+    Session.set("passFase",2);
+    instance.$(".p-fase1").removeClass("fase-selected");
+    instance.$(".p-fase3").removeClass("fase-selected");
+    instance.$(".p-fase2").addClass("fase-selected");
+  },
+  "click .p-fase3"(event, instance) {
+    Session.set("passFase",3);
+    instance.$(".p-fase1").removeClass("fase-selected");
+    instance.$(".p-fase2").removeClass("fase-selected");
+    instance.$(".p-fase3").addClass("fase-selected");
+  },
+  "click .f-fase1"(event, instance) {
+    Session.set("failFase",1);
+    instance.$(".f-fase3").removeClass("fase-selected");
+    instance.$(".f-fase2").removeClass("fase-selected");
+    instance.$(".f-fase1").addClass("fase-selected");
+  },
+  "click .f-fase2"(event, instance) {
+    Session.set("failFase",2);
+    instance.$(".f-fase1").removeClass("fase-selected");
+    instance.$(".f-fase3").removeClass("fase-selected");
+    instance.$(".f-fase2").addClass("fase-selected");
+  },
+  "click .f-fase3"(event, instance) {
+    Session.set("failFase",3);
+    instance.$(".f-fase1").removeClass("fase-selected");
+    instance.$(".f-fase2").removeClass("fase-selected");
+    instance.$(".f-fase3").addClass("fase-selected");
   }
-});
-
-Template.regression.onCreated(function bodyOnCreated() {
-  var courses = Courses.find().fetch();
-  var a = 0;
-  var b = 0;
-  var maxFit = 0;
-  var minFit = 0;
-  var lwrMin = 0;
-  var lwrMax = 0;
-  var upprMax = 0;
-  var upprMin = 0;
-  for(var i = 0; i<courses.length; i++) {
-    a += courses[i].a;
-    b += courses[i].b;
-    maxFit += courses[i].maxFit;
-    minFit += courses[i].minFit;
-    lwrMin += courses[i].lwrMin;
-    lwrMax += courses[i].lwrMax;
-    upprMax += courses[i].upprMax;
-    upprMin += courses[i].upprMin;
-  }
-  Session.set("performance",80);
-  Session.set("a",a/courses.length);
-  Session.set("b",b/courses.length);
-  Session.set("maxFit",maxFit/courses.length);
-  Session.set("minFit",minFit/courses.length);
-  Session.set("lwrMin",lwrMin/courses.length);
-  Session.set("lwrMax",lwrMax/courses.length);
-  Session.set("upprMax",upprMax/courses.length);
-  Session.set("upprMin",upprMin/courses.length);
+  // "mouseenter .available-list"(event, instance) {
+  //   instance.$(".course-tooltip").fadeIn();
+  // },
+  // "mouseleave .available-list"(event, instance) {
+  //   instance.$(".course-tooltip").fadeOut();
+  // }
 });
 
 Template.regression.rendered = function () {
   this.$("#slider").noUiSlider({
-    start: [80],
+    start: [Session.get("performance").toFixed(0)],
     connect: 'lower',
     range: {
       'min': 0,
@@ -367,8 +403,5 @@ Template.regression.rendered = function () {
     $(".ua5:lt("+size+")").css("opacity","1");
     /******/
     Session.set("size", size);
-  }).on('change', function (ev, val) {
-    if(val<0) val=0;
-    Session.set("performance",val);
   });
 };

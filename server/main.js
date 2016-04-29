@@ -7,11 +7,9 @@ Meteor.publish("this_courses", function () {
 });
 
 Meteor.publish('grades', function(who){
-  console.log(who);
   return Grades.find({"student": Number(who)});
 });
 
 Meteor.publish('students', function(who){
-  console.log(who);
   return Students.find({ "_id": Number(who)});
 });
