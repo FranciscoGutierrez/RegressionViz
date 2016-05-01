@@ -19,14 +19,14 @@
         <div id="availableList" class="available-courses available-list">
           {{#each courses}}
           <div class="course animated flipInX" id="{{this._id}}" credits="{{credits}}" style="margin-top: 4px;">
-            <input type="checkbox" class="ccb" id="cb-{{this._id}}" value="{{this._id}}">
-            <div style="display: flex; flex-direction: column; margin-left: 5px; width: 100%;">
-              <div class="course-title">{{name}}</div>
-              <div class="course-credits" style="color: #5c5c5c;">{{this._id}} - <b>{{credits}}</b> ects - <b>{{hours}}</b> hours</div>
-              <div class="pass-rate"><b>{{difficulty}}</b> out of <b>10</b> students pass</div>
-            </div>
+            <paper-checkbox class="ccb" id="cb-{{this._id}}" value="{{this._id}}">
+              <div id="checkboxLabel" style="display: flex; flex-direction: column;">
+                <div class="course-title">{{name}}</div>
+                <div class="course-credits" style="color: #5c5c5c;">{{this._id}} - <b>{{credits}}</b> ects - <b>{{hours}}</b> hours</div>
+                <div class="pass-rate"><b>{{difficulty}}</b> out of <b>10</b> students pass</div>
+              </div>
+            </paper-checkbox>
             <div class="pass-score">{{pnow}}<span>forecast</span></div>
-            <paper-ripple></paper-ripple>
           </div>
           {{/each}}
           <br>
@@ -220,7 +220,7 @@
             <div class="detail-text">Courses</div>
           </div>
           <div class="detail">
-            <div class="detail-top">{{odcred}}</div>
+            <div class="detail-top">{{odcred}}/30</div>
             <div class="detail-text">Credits</div>
           </div>
           <div class="detail">

@@ -63,7 +63,6 @@
   padding: 3px;
   align-items: flex-end;
   justify-content: space-between;
-  cursor: pointer;
   position: relative;
 }
 
@@ -90,16 +89,16 @@
   color: #424242;
   font-size: 12px;
   font-weight: normal;
-  line-height: 1.4;
   opacity: 0.5;
+  margin-top: 5px;
 }
 
 .available-courses {
   border-top: 1px solid #E6E6E6;
   overflow-y: auto;
   overflow-x: hidden;
-  min-width: 350px;
-  max-width: 350px;
+  min-width: 320px;
+  max-width: 320px;
   height: 550px;
   -webkit-mask-image: -webkit-gradient(linear, left 80%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
@@ -169,6 +168,10 @@
   font-weight: 600;
   line-height: 1.1;
   text-align: end;
+}
+
+.predic-text b {
+  font-weight: normal;
 }
 
 .predic-text span {
@@ -368,19 +371,20 @@ text {
 .pass-score {
   display: flex;
   flex-direction: column;
-  font-weight: 200;
+  font-weight: normal;
   font-size: 20px;
   text-align: center;
-  color: #424242;
+  color: #5c5c5c;
+  cursor: default;
 }
 
 .pass-score span{
   padding: 0;
   margin: 0;
-  color: #424242;
+  color: #757575;
   font-size: 12px;
-  font-weight: normal;
-  opacity: 0.5;
+  font-weight: 300;
+  cursor: default;
 }
 
 .pass-rate {
@@ -390,10 +394,14 @@ text {
   font-size: 12px;
   font-weight: normal;
   opacity: 0.5;
+  margin-top: 12px;
 }
 
 .ccb {
   align-self: center;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
 }
 
 .mid-content {
@@ -419,13 +427,13 @@ text {
 }
 
 .left-column {
-  min-width: 350px;
-  max-width: 350px;
+  min-width: 320px;
+  max-width: 320px;
 }
 
 .available {
-  min-width: 350px;
-  max-width: 350px;
+  min-width: 320px;
+  max-width: 320px;
 }
 
 

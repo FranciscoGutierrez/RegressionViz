@@ -63,7 +63,12 @@ Template.regression.helpers({
     };
   },
   courses() {
-    var courses = Courses.find({fase: 2},{sort: {name: 1}}).fetch();
+    var arr = [];
+    var filter = Grades.find({fase:"eerste fase", academischeperiode: "Tweede Semester"}).fetch();
+    for(var i=0; i<filter.length; i++){
+      arr.push(filter[i].code);
+    }
+    var courses = Courses.find({_id: {$in:arr}},{sort: {name: 1}}).fetch();
     var p = Session.get("performance")/100;
     for(var i=0; i<courses.length; i++) {
       courses[i].pnow = (courses[i].a + (courses[i].b * p)).toFixed(1);
@@ -191,10 +196,10 @@ Template.regression.helpers({
   image(){
     var arr = [];
     var a = Session.get("a");
-    var courses = $('input:checkbox:checked').map(function () {
-      arr.push({ name : this.value});
-      return this.value;
-    }).get();
+    var courses = $('paper-checkbox[checked]').each(function() {
+      arr.push({ name : $(this).attr("value") });
+    });
+    console.log(arr);
     return arr;
   },
   overalldetails() {
@@ -203,11 +208,10 @@ Template.regression.helpers({
     var odhour = 0;
     var odcred = 0;
     var odcourse = 0;
-    var courses = $('input:checkbox:checked').map(function () {
-      odhour   = Courses.findOne({_id:this.value}).hours + odhour;
-      odcred   = Courses.findOne({_id:this.value}).credits + odcred;
+    var courses = $('paper-checkbox[checked]').each(function() {
+      odhour   = Courses.findOne({_id:$(this).attr("value")}).hours + odhour;
+      odcred   = Courses.findOne({_id:$(this).attr("value")}).credits + odcred;
       odcourse = odcourse + 1;
-      return this.value;
     }).get();
     if(courses.length <= 0) {
       $(".right-column-container").fadeOut();
@@ -226,9 +230,10 @@ Template.regression.events({
   "click .course"(event, instance) {
     // instance.$("#cb-"+this._id).prop("checked", !instance.$("#cb-"+this._id).prop("checked"));
     $(".observations").css("fill", "#b0b0b0");
-    var arr = $('input:checkbox:checked').map(function () {
-      return this.value;
-    }).get();
+    var arr = [];
+    var courses = $('paper-checkbox[checked]').each(function() {
+      arr.push($(this).attr("value"));
+    });
     if (arr.length <= 0) {
       Session.set("a",0);
       Session.set("b",0);
