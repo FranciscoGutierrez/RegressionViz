@@ -230,106 +230,95 @@
         </div>
         {{/with}}
         {{#with details}}
-        <div class="ubar-container">
-          <div class="u-content uc1" style="background:{{ua1}};">
-            <div class="utext" style="color: #808080">{{ua1}}</div>
-            <div class="ubar"  style="background:#{{ac1}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+        <div class="ubar-main">
+          <div class="ubar-left" style="width:{{uleft}}px;"></div>
+          <div class="ubar">
+            <div class="ubar-red"    style="width:{{red}}px;"></div>
+            <div class="ubar-yellow" style="width:{{yellow}}px;"></div>
+            <div class="ubar-green"  style="width:{{green}}px;"></div>
+          </div>
+          <div class="ubar-right" style="width:{{uright}}px;"></div>
+        </div>
+        <div class="umeter">
+          <div class="um m-2" style="color: #757575; justify-content: space-between;"><span style="color: #424242;">0</span> 2</div>
+          <div class="um m-4">4</div>
+          <div class="um m-6" style="color: #757575;">6</div>
+          <div class="um m-8">8</div>
+          <div class="um m-10" style="color: #757575;">10</div>
+          <div class="um m-12">12</div>
+          <div class="um m-14" style="color: #757575;">14</div>
+          <div class="um m-16">16</div>
+          <div class="um m-18" style="color: #757575;">18</div>
+          <div class="um m-20">20</div>
+          <div class="umeter-ticks">
+            <div class="utick" style="justify-content: space-between;"><span>.</span>.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+            <div class="utick">.</div>
+          </div>
+          <div class="udots-container">
+            <div class="udots" style="left: {{ua1}}px;">
               <div class="ua1 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc2" style="background:{{ua2}};">
-            <div class="utext" style="color: #808080">{{ua2}}</div>
-            <div class="ubar"  style="background:#{{ac2}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua2}}px;">
               <div class="ua2 udot"></div>
               <div class="ua2 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc3" style="background:{{ua3}};">
-            <div class="utext" style="color: #808080">{{ua3}}</div>
-            <div class="ubar"  style="background:#{{ac3}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua3}}px;">
               <div class="ua3 udot"></div>
               <div class="ua3 udot"></div>
               <div class="ua3 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc4" style="background:{{ua4}};">
-            <div class="utext" style="color: #808080">{{ua4}}</div>
-            <div class="ubar"  style="background:#{{ac4}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua4}}px;">
               <div class="ua4 udot"></div>
               <div class="ua4 udot"></div>
               <div class="ua4 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc5" style="background:{{ua5}};">
-            <div class="utext" style="color: #808080">{{ua5}}</div>
-            <div class="ubar"  style="background:#{{ac5}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua5}}px;">
               <div class="ua5 udot"></div>
               <div class="ua5 udot"></div>
               <div class="ua5 udot"></div>
               <div class="ua5 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc6" style="background:{{ua6}};">
-            <div class="utext" style="color: #424242; font-weight:bold;">{{ua6}}</div>
-            <div class="ubar"  style="background:#{{ac6}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua6}}px;">
               <div class="ua6 udot"></div>
               <div class="ua6 udot"></div>
               <div class="ua6 udot"></div>
               <div class="ua6 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc7" style="background:{{ua7}};">
-            <div class="utext" style="color: #808080">{{ua7}}</div>
-            <div class="ubar"  style="background:#{{ac7}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua7}}px;">
               <div class="ua7 udot"></div>
               <div class="ua7 udot"></div>
               <div class="ua7 udot"></div>
               <div class="ua7 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc8" style="background:{{ua8}};">
-            <div class="utext" style="color: #808080">{{ua8}}</div>
-            <div class="ubar"  style="background:#{{ac8}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua8}}px;">
               <div class="ua8 udot"></div>
               <div class="ua8 udot"></div>
               <div class="ua8 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc9" style="background:#{{ua9}};">
-            <div class="utext" style="color: #808080">{{ua9}}</div>
-            <div class="ubar"  style="background:#{{ac9}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua9}}px;">
               <div class="ua9 udot"></div>
               <div class="ua9 udot"></div>
               <div class="ua9 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc10" style="background:{{ua10}};">
-            <div class="utext" style="color: #808080">{{ua10}}</div>
-            <div class="ubar"  style="background:#{{ac10}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua10}}px;">
               <div class="ua10 udot"></div>
               <div class="ua10 udot"></div>
             </div>
-          </div>
-          <div class="u-content uc11" style="background:{{ua11}};">
-            <div class="utext" style="color: #808080">{{ua11}}</div>
-            <div class="ubar"  style="background:#{{ac11}};">.</div>
-            <div class="udots" style="display: flex; flex-direction: column-reverse;">
+            <div class="udots" style="left: {{ua11}}px;">
               <div class="ua11 udot"></div>
             </div>
           </div>
         </div>
         <div class="uncertainty-sentence">
-          <span>5</span> out of <span>30</span> students like you score with <b>{{pred}}</b>
+          <span>4</span> out of <span>30</span> students like you score with <b>{{pred}}</b>
         </div>
         {{/with}}
       </div>

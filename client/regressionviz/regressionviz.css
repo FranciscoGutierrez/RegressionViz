@@ -185,12 +185,16 @@
   opacity: 0.5;
 }
 
-.ubar-container {
-  display:flex;
+.udots-container {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 3px;
-  position: relative;
+  position: absolute;
+  width: 100%;
+  top: -58px;
+  left: 0;
+  transition: all 200ms ease-out;
 }
 
 .uparrow {
@@ -248,24 +252,33 @@
 }
 
 .uncertainty {
-  transition: all 900ms ease-out;
+  transition: all 600ms ease-out;
 }
 
 image {
-  transition: all 900ms ease-out;
+  transition: all 600ms ease-out;
 }
 
 .udot {
   background:#B45C7E;
   border-radius:50%;
-  min-width:10px;
-  max-width:10px;
-  min-height: 10px;
-  max-height: 10px;
-  margin-top: 2px;
+  min-width:8px;
+  max-width:8px;
+  min-height: 8px;
+  max-height: 8px;
+  margin-top: 1px;
   opacity: 1;
-  transition: all 600ms ease-out;
   border: 1px solid #e5e5e5;
+}
+
+.udots {
+  position: absolute;
+  left: 0px;
+  top: -11px;
+  transition: all 200ms ease-out;
+  height: 60px;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .uline {
@@ -282,14 +295,13 @@ text {
 
 .ubar {
   margin-top: 2px;
-  width: 100%;
-  height: 6px;
+  height: 5px;
   display: flex;
   justify-content: center;
-  font-size: 8px;
+  font-size: 5px;
   color: #808080;
   transition: all 100ms ease-out;
-  border-left: 1px solid rgba(66,66,66,0.1)
+  border-left: 1px solid rgba(66,66,66,0.1);
 }
 
 .utext {
@@ -484,11 +496,12 @@ text {
 .uncertainty-sentence {
   font-size: 16px;
   color: #757575;
-  text-align: start;
+  text-align: end;
   width: 200px;
-  align-self: flex-start;
+  /* align-self: flex-end; */
   margin-top: 15px;
   font-weight: 300;
+  margin-left: 100px;
 }
 
 .uncertainty-sentence span {
@@ -526,4 +539,87 @@ text {
   font-size: 16px;
   color: #757575;
   font-weight: 300;
+}
+
+.umeter {
+  width: 300px;
+  height: 3px;
+  background: white;
+  border-top: 1px solid black;
+  display: flex;
+  height: 10px;
+  position: relative;
+}
+
+.umeter .um {
+  font-size: 11px;
+  color: #424242;
+  width: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 10px;
+  padding-top: 3px;
+}
+
+.ubar-main { display: flex; transition: all 200ms ease-out; }
+.ubar-left { transition: all 200ms ease-out; }
+.ubar-right { transition: all 200ms ease-out; }
+
+
+.ubar-red {
+  margin-top: 2px;
+  width: 100%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  font-size: 5px;
+  color: #808080;
+  transition: all 100ms ease-out;
+  border-left: 1px solid rgba(66,66,66,0.1);
+  background: #e74c3c;
+}
+
+.ubar-green {
+  margin-top: 2px;
+  width: 100%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  font-size: 5px;
+  color: #808080;
+  transition: all 100ms ease-out;
+  border-left: 1px solid rgba(66,66,66,0.1);
+  background: #0f9d58;
+}
+
+.ubar-yellow {
+  margin-top: 2px;
+  width: 0%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  font-size: 5px;
+  color: #808080;
+  transition: all 100ms ease-out;
+  border-left: 1px solid rgba(66,66,66,0.1);
+  background: #f39c12;
+}
+
+.umeter-ticks {
+  display: flex;
+  position: absolute;
+  left: 0;
+  justify-content: space-around;
+  top: -19px;
+}
+
+.utick {
+  width: 30px;
+  width: 30px;
+  color: #757575;
+  font-size: 20px;
+  justify-content: flex-end;
+  display: flex;
+  opacity: 0.45;
 }

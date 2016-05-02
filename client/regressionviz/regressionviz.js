@@ -164,30 +164,53 @@ Template.regression.helpers({
     var a10 = (pre-((pre-l)/5)*4).toFixed(1);
     var a11 = l;
 
+    if (a1<0) a1 = 0;
+    if (a2<0) a2 = 0;
+    if (a3<0) a3 = 0;
+    if (a4<0) a4 = 0;
+    if (a5<0) a5 = 0;
+    if (a6<0) a6 = 0;
+    if (a7<0) a7 = 0;
+    if (a8<0) a8 = 0;
+    if (a9<0) a9 = 0;
+    if (a10<0) a10 = 0;
+    if (a11<0) a11 = 0;
+
+    var uleft = a11*15;
+    var uright = (20-a1)*15;
+
+    var red = (8-a11)*15; //0-8
+    var green = (a1-10)*15; //10-20
+    var yellow = ((a1-a11)*15) - (red + green);// 8-10
+
+    if(a11>8) yellow = ((a1-a11)*15) - green;
+    if(a1<10) yellow = ((a1-a11)*15) - red;
+    if(a1<8)  red = a1*15;
+
+    if(red<0)    red    = 0;
+    if(green<0)  green  = 0;
+    if(yellow<0) yellow = 0;
+    if(uleft<0)  uleft  = 0;
+    if(uright<0) uright = 0;
+
     return {
-      ua1: (a11<=0) ? a11 = 0 : a11,
-      ac1: (a11>=10) ? "0f9d58" : (a11<=8) ? "e74c3c": "f39c12",
-      ua2: (a10<=0) ? a10 = 0 : a10,
-      ac2: (a10>=10) ? "0f9d58" : (a10<=8) ? "e74c3c": "f39c12",
-      ua3: (a9<=0) ? a9 = 0 : a9,
-      ac3: (a9>=10) ? "0f9d58" : (a9<=8) ? "e74c3c": "f39c12",
-      ua4: (a8<=0) ? a8 = 0 : a8,
-      ac4: (a8>=10) ? "0f9d58" : (a8<=8) ? "e74c3c": "f39c12",
-      ua5: (a7<=0) ? a7 = 0 : a7,
-      ac5: (a7>=10) ? "0f9d58" : (a7<=8) ? "e74c3c": "f39c12",
-      ua6: (a6<=0) ? a6 = 0 : a6, // Center... purple..
-      ac6: (a6>=10) ? "0f9d58" : (a6<=8) ? "e74c3c": "f39c12",
-      ua7: (a5<=0) ? a5 = 0 : a5,
-      ac7: (a5>=10) ? "0f9d58" : (a5<=8) ? "e74c3c": "f39c12",
-      ua8: (a4<=0) ? a4 = 0 : a4,
-      ac8: (a4>=10) ? "0f9d58" : (a4<=8) ? "e74c3c": "f39c12",
-      ua9: (a3<=0) ? a3 = 0 : a3,
-      ac9: (a3>=10) ? "0f9d58" : (a3<=8) ? "e74c3c": "f39c12",
-      ua10:(a2<=0) ? a2 = 0 : a2,
-      ac10:(a2>=10) ? "0f9d58" : (a2<=8) ? "e74c3c": "f39c12",
-      ua11:(a1<=0) ? a1 = 0 : a1,
-      ac11:(a1>=10) ? "0f9d58" : (a1<=8) ? "e74c3c": "f39c12",
-      pred:pre
+      ua1: (a11*15)-4,
+      ua2: (a10*15)-4,
+      ua3: (a9*15)-4,
+      ua4: (a8*15)-4,
+      ua5: (a7*15)-4,
+      ua6: (a6*15)-4,
+      ua7: (a5*15)-4,
+      ua8: (a4*15)-4,
+      ua9: (a3*15)-4,
+      ua10: (a2*15)-4,
+      ua11: (a1*15)-4,
+      pred:pre,
+      uright: uright,
+      uleft: uleft,
+      red: red,
+      yellow: yellow,
+      green: green
     };
   },
   size() {
@@ -199,7 +222,6 @@ Template.regression.helpers({
     var courses = $('paper-checkbox[checked]').each(function() {
       arr.push({ name : $(this).attr("value") });
     });
-    console.log(arr);
     return arr;
   },
   overalldetails() {
