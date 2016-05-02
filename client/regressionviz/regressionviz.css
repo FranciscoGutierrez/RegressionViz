@@ -5,8 +5,8 @@
   font-family: Roboto, Arial, sans-serif;
   background: white;
   padding: 15px 15px 0;
-  min-width: 1257px;
-  max-width: 1257px;
+  /*min-width: 1257px;
+  max-width: 1257px;*/
   /*box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.45);*/
   -webkit-touch-callout: none;
   -webkit-user-select: none;
