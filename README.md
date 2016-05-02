@@ -1,6 +1,6 @@
 # RegressionViz
 
-A visualization of simple linear regression that illustrates uncertainty.
+A visualization of simple linear regression that illustrates the inherent uncertainty.
 
 # Change log
 
