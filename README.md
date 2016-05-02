@@ -6,7 +6,7 @@ A visualization of simple linear regression that illustrates uncertainty.
 
 ## v0.1.3
 
-<img src="public/scs3.png" height="400px">
+<img src="public/sc3.png" height="400px">
 
 ## v0.1.2
 
