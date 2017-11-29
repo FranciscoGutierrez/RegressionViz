@@ -10,6 +10,7 @@ Router.route('/:_id', {
   data: function () {
     var courses;
     var student = Router.current().params._id;
+    Blaze.render(Template.regression,$("body")[0]);
     Meteor.subscribe("this_courses", function(){
       Meteor.subscribe("students", student, function(){
         Meteor.subscribe("grades", student, function(){
@@ -27,7 +28,7 @@ Router.route('/:_id', {
           $(".loading-screen").fadeOut(function(){
             $(this).remove();
           });
-          Blaze.render(Template.regression,$("body")[0]);
+          //Blaze.render(Template.regression,$("body")[0]);
         });
       });
     });
