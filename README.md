@@ -1,6 +1,6 @@
 # RegressionViz
 
-A visualization of simple linear regression that illustrates the inherent uncertainty.
+A visualization to assist students in their course planning decision-making.
 
 # Change log
 
